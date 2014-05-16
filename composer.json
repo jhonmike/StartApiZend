@@ -1,5 +1,5 @@
 {
-    "name": "zf2skeletonapplication",
+    "name": "2ends skeleton",
     "description": "Skeleton Application for ZF2",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -9,8 +9,8 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zf2-app/zf2-base": "dev-master",
-        "zf2-app/zf2-acl": "dev-master",
-        "zf2-app/zf2-user": "dev-master"
+        "2ends/zf2-base": "dev-master",
+        "2ends/zf2-acl": "dev-master",
+        "2ends/zf2-user": "dev-master"
     }
 }
