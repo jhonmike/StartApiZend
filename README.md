@@ -12,7 +12,7 @@ Parte 01
     php composer.phar self-update
     php composer.phar install
 
-Parte 02 - Alterar o repository do projeto (Porque se vc da commit em algo que nao é do skeleton vc pode morrer hehe)
+Parte 02 - Alterar o repository do projeto
 
     SSH: git remote set-url origin git@10.0.0.2:namespace/repository.git
     HTTP: git remote set-url origin http://10.0.0.2/gitlab/namespace/repository.git
@@ -20,7 +20,7 @@ Parte 02 - Alterar o repository do projeto (Porque se vc da commit em algo que n
 Config base de dados
 --------------------
 
-DUPLIQUE, não renomei o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
+DUPLIQUE, não renomeie o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
 
 Criando o banco
 ---------------
