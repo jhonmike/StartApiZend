@@ -6,6 +6,7 @@ Instalação
 Parte 01
 
     SSH: git clone git@github.com:jhonmike/Zf2SkeletonApp.git
+    OR
     HTTP: git clone https://github.com/jhonmike/Zf2SkeletonApp.git
     cd zf2skeletonapp
     php composer.phar self-update
@@ -21,8 +22,8 @@ Config base de dados
 
 DUPLIQUE, não renomei o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
 
-Zera o banco
-------------
+Criando o banco
+---------------
 linux
 
     php vendor/bin/doctrine-module orm:schema-tool:create
@@ -33,6 +34,17 @@ windows
     vendor\bin\doctrine-module orm:schema-tool:create
     vendor\bin\doctrine-module data-fixture:import
 
+Primeiro Acesso
+---------------
+Developer (You)
+
+    Login: developer
+    Senha: 123456
+
+Administrator (Your client)
+
+    Login: admin
+    Senha: 123456
 
 Atualizar banco
 ---------------
