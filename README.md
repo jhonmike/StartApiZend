@@ -1,9 +1,8 @@
 Zf2SkeletonApp
 ==============
 
-Instalação
-----------
-Parte 01
+1) Instalação
+-------------
 
     SSH: git clone git@github.com:jhonmike/Zf2SkeletonApp.git
     OR
@@ -12,18 +11,13 @@ Parte 01
     php composer.phar self-update
     php composer.phar install
 
-Parte 02 - Alterar o repository do projeto
-
-    SSH: git remote set-url origin git@10.0.0.2:namespace/repository.git
-    HTTP: git remote set-url origin http://10.0.0.2/gitlab/namespace/repository.git
-
-Config base de dados
---------------------
+2) Config base de dados
+-----------------------
 
 DUPLIQUE, não renomeie o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
 
-Criando o banco
----------------
+3) Criando o banco e alimentando as tabelas
+-------------------------------------------
 linux
 
     php vendor/bin/doctrine-module orm:schema-tool:create
@@ -34,8 +28,8 @@ windows
     vendor\bin\doctrine-module orm:schema-tool:create
     vendor\bin\doctrine-module data-fixture:import
 
-Primeiro Acesso
----------------
+4) Primeiro Acesso
+------------------
 Developer (You)
 
     Login: developer
@@ -46,6 +40,8 @@ Administrator (Your client)
     Login: admin
     Senha: 123456
 
+Outros Comandos
+---------------
 Atualizar banco
 ---------------
 linux
