@@ -11,6 +11,7 @@
         "php": ">=5.3.3",
         "2ends/zf2-base": "dev-master",
         "2ends/zf2-acl": "dev-master",
-        "2ends/zf2-user": "dev-master"
+        "2ends/zf2-user": "dev-master",
+        "2ends/zf2-upload": "dev-master"
     }
 }
