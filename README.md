@@ -39,6 +39,8 @@ Administrator (Your client)
 
     Login: admin
     Senha: 123456
+    
+Demo: http://zend.jhonmike.com.br
 
 Outros Comandos
 ---------------
