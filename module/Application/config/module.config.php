@@ -13,6 +13,33 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
+                // 'may_terminate' => true,
+                // 'child_routes' => array(
+                //     'default' => array(
+                //         'type' => 'Segment',
+                //         'options' => array(
+                //             'route' => '[/:action]',
+                //             'constraints' => array(
+                //                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                //                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                //             ),
+                //             'defaults' => array(
+                //                 '__NAMESPACE__' => 'Application\Controller',
+                //                 'controller' => 'Index'
+                //             )
+                //         )
+                //     )
+                // )
+            ),
+            'home-client' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/client',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'client',
+                    ),
+                ),
             ),
             'home-admin' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
