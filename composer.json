@@ -1,17 +1,21 @@
 {
     "name": "2ends skeleton",
     "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "framework",
-        "zf2"
-    ],
     "homepage": "http://framework.zend.com/",
+    "keywords": ["framework","zf2","skeleton"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jhon Mike Soares",
+            "email": "jhonmike@hotmail.com.br",
+            "homepage": "http://www.jhonmike.com.br",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "2ends/zf2-base": "dev-master",
         "2ends/zf2-acl": "dev-master",
-        "2ends/zf2-user": "dev-master",
-        "2ends/zf2-upload": "dev-master"
+        "2ends/zf2-user": "dev-master"
     }
 }
