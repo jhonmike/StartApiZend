@@ -14,8 +14,8 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "2ends/zf2-base": "dev-master",
-        "2ends/zf2-acl": "dev-master",
-        "2ends/zf2-user": "dev-master"
+        "2ends/zf2-base": "0.0.2",
+        "2ends/zf2-acl": "0.0.1",
+        "2ends/zf2-user": "0.0.1"
     }
 }
