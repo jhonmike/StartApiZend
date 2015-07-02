@@ -13,57 +13,32 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
-                // 'may_terminate' => true,
-                // 'child_routes' => array(
-                //     'default' => array(
-                //         'type' => 'Segment',
-                //         'options' => array(
-                //             'route' => '[/:action]',
-                //             'constraints' => array(
-                //                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                //                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
-                //             ),
-                //             'defaults' => array(
-                //                 '__NAMESPACE__' => 'Application\Controller',
-                //                 'controller' => 'Index'
-                //             )
-                //         )
-                //     )
-                // )
             ),
-            'home-client' => array(
+            'dashboard' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/client',
+                    'route'    => '/admin/dashboard',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
-                        'action'     => 'client',
-                    ),
-                ),
-            ),
-            'home-admin' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/admin',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'admin',
-                    ),
-                ),
-            ),
-            'home-dev' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/dev',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'developer',
+                        'action'     => 'dashboard',
                     ),
                 ),
             ),
         ),
     ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Dashboard',
+                'route' => 'dashboard',
+                'resource'=> 'dashboard',
+            ),
+        ),
+    ),
     'service_manager' => array(
+        'factories' => array(
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        ),
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',

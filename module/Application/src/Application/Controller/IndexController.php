@@ -12,17 +12,7 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function clientAction()
-    {
-        return new ViewModel();
-    }
-
-    public function adminAction()
-    {
-        return new ViewModel();
-    }
-
-    public function developerAction()
+    public function dashboardAction()
     {
         return new ViewModel();
     }
