@@ -31,7 +31,8 @@ return array(
             array(
                 'label' => 'Dashboard',
                 'route' => 'dashboard',
-                'resource'=> 'dashboard',
+                'resource'=> 'Application\Controller\Index',
+                'privilege'=> 'view',
             ),
         ),
     ),
@@ -70,8 +71,6 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',
-            'layout/admin'          => __DIR__ . '/../view/layout/admin.phtml',
-            'layout/developer'      => __DIR__ . '/../view/layout/developer.phtml',
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',
         ),

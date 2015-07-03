@@ -1,7 +1,9 @@
 <ul class="nav navbar-nav">
     <?php foreach ($this->container as $page) { ?>
         <?php // when using partials we need to manually check for ACL conditions ?>
-        <?php //if (!$this->acl->isAllowed($this->role,$page->getResource(),$page->getPrivilege())) { continue; } else { ?>
+        <?php $role = ($this->UserIdentity()) ? $this->UserIdentity()->getRole()->getName() : 'Visit' ; ?>
+        <?php $acl = $this->Acl(); ?>
+        <?php if (!$acl->isAllowed($role,$page->getResource(),$page->getPrivilege())) { continue; } else { ?>
             <?php if (!$page->isVisible() || !$this->navigation()->accept($page)) { continue; } ?>
             <?php $hasChildren = $page->hasPages(); ?>
             <?php if (!$hasChildren) { ?>
@@ -26,6 +28,6 @@
                 </ul>
             </li>
             <?php } ?>
-        <?php //} ?>
+        <?php } ?>
     <?php } ?>
 </ul>

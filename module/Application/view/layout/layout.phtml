@@ -1,4 +1,4 @@
-<!-- TODO navigation -->
+x<!-- TODO navigation -->
 <?php echo $this->doctype(); ?>
 
 <html lang="pt-BR">
@@ -40,15 +40,7 @@
                     <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Zf2SkeletonApp</a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <?php 
-                    $role = ($this->UserIdentity()) ? $this->UserIdentity()->getRole()->getName() : 'Visit' ;
-                    $acl = $this->Acl();
-                    echo $this->navigation('navigation')
-                        ->menu()
-                        // ->setUlClass('nav navbar-nav')
-                        // ->setAcl($acl)
-                        // ->setRole($role)
-                        ->setPartial('partials/navigation-top.phtml', array('acl' => $acl, 'role' => $role));
+                    <?php echo $this->navigation('navigation')->menu()->setPartial('partials/navigation-top.phtml');
                     ?>
                     <?php if ($this->UserIdentity()) : ?>
                         <ul class="nav navbar-nav navbar-right">
@@ -61,6 +53,19 @@
                                 </ul>
                             </li>
                         </ul>
+                    <?php else: ?>
+                        <form class="navbar-form navbar-right" action="/auth" method="post">
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="rememberme" value="1"><label for="rememberme">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Autenticar</button>
+                        </form>
                     <?php endif; ?>
                 </div>
 
