@@ -54,7 +54,7 @@ x<!-- TODO navigation -->
                             </li>
                         </ul>
                     <?php else: ?>
-                        <form class="navbar-form navbar-right" action="/auth" method="post">
+                        <form class="navbar-form navbar-right" action="<?php echo $this->url('user-auth') ?>" method="post">
                             <div class="form-group">
                                 <input type="text" name="username" class="form-control" placeholder="Username">
                             </div>
