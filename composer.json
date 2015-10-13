@@ -1,21 +1,21 @@
 {
-    "name": "2ends skeleton",
+    "name": "Full-Stack Zend2/Doctrine2",
     "description": "Estrutura base de desenvolvimento Zend",
-    "homepage": "http://2ends.com.br/",
+    "homepage": "http://undefinedsource.github.io/",
     "keywords": ["framework","zf2","skeleton"],
     "license": "MIT",
     "authors": [
         {
             "name": "Jhon Mike Soares",
-            "email": "jhon@2ends.com.br",
-            "homepage": "http://www.2ends.com.br",
+            "email": "developer@jhonmike.com.br",
+            "homepage": "http://www.jhonmike.com.br",
             "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.3.3",
-        "2ends/zf2-base": "dev-master",
-        "2ends/zf2-acl": "dev-master",
-        "2ends/zf2-user": "dev-master"
+        "jhonmike/zf2-base": "dev-master",
+        "jhonmike/zf2-acl": "dev-master",
+        "jhonmike/zf2-user": "dev-master"
     }
 }
