@@ -1,24 +1,35 @@
-Zf2SkeletonApp
-==============
+# Full-Stack Zend2/Doctrine2
 
-1) Instalação
--------------
+## 1. Dependencias de Instalação
+### Composer
 
-    SSH: git clone git@github.com:jhonmike/Zf2SkeletonApp.git
+    curl -sS https://getcomposer.org/installer | php
+    mv composer.phar /usr/local/bin/composer
+
+### Gulp
+
+    npm install -g gulp
+
+## 2. GIT Clone, Baixe o Repositorio
+
+    SSH: git clone git@github.com:undefinedsource/fs-zend2.git
     OR
-    HTTP: git clone https://github.com/jhonmike/Zf2SkeletonApp.git
-    cd zf2skeletonapp
-    php composer.phar self-update
-    php composer.phar install
+    HTTP: git clone https://github.com/undefinedsource/fs-zend2.git
+    cd fs-zend2
 
-2) Config base de dados
------------------------
+## 3. Instalação
 
-DUPLIQUE, não renomeie o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
+    composer install
+    npm install
+    gulp
 
-3) Criando o banco e alimentando as tabelas
--------------------------------------------
-linux
+## 4. Config base de dados
+
+DUPLIQUE o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
+
+## 5. Criando o banco e alimentando as tabelas com os seguintes comandos
+
+linux/osx
 
     php vendor/bin/doctrine-module orm:schema-tool:create
     php vendor/bin/doctrine-module data-fixture:import
@@ -28,25 +39,22 @@ windows
     vendor\bin\doctrine-module orm:schema-tool:create
     vendor\bin\doctrine-module data-fixture:import
 
-4) Primeiro Acesso
-------------------
-Developer (You)
+## 6. Acesso Pre Cadastrados
+
+Developer
 
     Login: developer
     Senha: 123456
 
-Administrator (Your client)
+Administrator
 
     Login: admin
     Senha: 123456
-    
-Demo: http://zend.jhonmike.com.br
 
-Outros Comandos
----------------
-Atualizar banco
----------------
-linux
+## Outros Comandos
+### Atualizar banco
+
+linux/osx
 
     php vendor/bin/doctrine-module orm:schema-tool:update --force
 
@@ -54,9 +62,9 @@ windows
 
     vendor\bin\doctrine-module orm:schema-tool:update --force
 
-Apagar banco
-------------
-linux
+### Apagar banco
+
+linux/osx
 
     php vendor/bin/doctrine-module orm:schema-tool:drop --force
 

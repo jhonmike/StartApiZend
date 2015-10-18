@@ -4,7 +4,7 @@ x<!-- TODO navigation -->
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('Zf2SkeletonApp')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('US Zend2')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -13,18 +13,12 @@ x<!-- TODO navigation -->
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/img/favicon.ico'))
-            ->prependStylesheet($this->basePath() . '/assets/css/main.css')
-            ->prependStylesheet($this->basePath() . '/library/fontawesome/css/font-awesome.min.css')
-            ->prependStylesheet($this->basePath() . '/library/bootstrap/css/bootstrap.min.css')  ?>
+            ->prependStylesheet($this->basePath() . '/assets/css/style.min.css')  ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
             ->prependScript("var basePath = '".$this->basePath()."'" )
-            ->prependFile($this->basePath() . '/assets/js/app.js')
-            ->prependFile($this->basePath() . '/library/bootstrap/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/library/jquery/jquery-1.11.0.min.js')
-            ->prependFile($this->basePath() . '/library/base/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/library/base/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))  ?>
+            ->prependFile($this->basePath() . '/assets/js/script.min.js')  ?>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -37,13 +31,13 @@ x<!-- TODO navigation -->
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">US Zend2</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Undefined Source</a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <?php echo $this->navigation('navigation')->menu()->setPartial('partials/navigation-top.phtml');
                     ?>
-                    <?php if ($this->UserIdentity()) : ?>
-                        <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
+                        <?php if ($this->UserIdentity()) : ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo ($this->UserIdentity()->getPerfil()->getName()) ? $this->UserIdentity()->getPerfil()->getName() : $this->UserIdentity()->getUsername() ; ?>! <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -52,21 +46,12 @@ x<!-- TODO navigation -->
                                     <li><a href="<?php echo $this->url('user-auth/default', array('action' => 'logout')) ?>">Logout</a></li>
                                 </ul>
                             </li>
-                        </ul>
-                    <?php else: ?>
-                        <form class="navbar-form navbar-right" action="<?php echo $this->url('user-auth') ?>" method="post">
-                            <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="rememberme" value="1"><label for="rememberme">Remember me</label>
-                            </div>
-                            <button type="submit" class="btn btn-default">Autenticar</button>
-                        </form>
-                    <?php endif; ?>
+                        <?php else: ?>
+                            <li>
+                                <a href="<?php echo $this->url('user-auth') ?>">Login</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
                 </div>
 
             </div><!-- /.container -->
