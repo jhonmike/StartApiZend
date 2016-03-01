@@ -12,10 +12,10 @@
 
 ## 2. GIT Clone, Baixe o Repositorio
 
-    SSH: git clone git@github.com:undefinedsource/fs-zend2.git
+    SSH: git clone git@github.com:jhonmike/StartZend2.git
     OR
-    HTTP: git clone https://github.com/undefinedsource/fs-zend2.git
-    cd fs-zend2
+    HTTP: git clone https://github.com/jhonmike/StartZend2.git
+    cd StartZend2
 
 ## 3. Instalação
 
