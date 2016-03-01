@@ -12,10 +12,10 @@
 
 ## 2. GIT Clone, Baixe o Repositorio
 
-    SSH: git clone git@github.com:jhonmike/StartZend2.git
+    SSH: git clone git@github.com:jhonmike/StartAppZend2.git
     OR
-    HTTP: git clone https://github.com/jhonmike/StartZend2.git
-    cd StartZend2
+    HTTP: git clone https://github.com/jhonmike/StartAppZend2.git
+    cd StartAppZend2
 
 ## 3. Instalação
 
