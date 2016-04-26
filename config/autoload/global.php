@@ -11,17 +11,6 @@
  * file.
  */
 
-return array(
-    'mail' => array(
-        'name' => 'mail.dominio.com.br',
-        'host' => 'mail.dominio.com.br',
-        'port' => 666,
-        'connection_class' => 'login',
-        'connection_config' => array(
-            'username' => 'username',
-            'password' => '123456',
-            'ssl' => 'tls',
-            'from' => 'contact@dominio.com.br'
-        )
-    )
-);
+return [
+    
+];

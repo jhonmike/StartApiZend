@@ -1,10 +1,7 @@
-x<!-- TODO navigation -->
-<?php echo $this->doctype(); ?>
-
-<html lang="pt-BR">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('US Zend2')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('ZF Skeleton Application')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -12,7 +9,7 @@ x<!-- TODO navigation -->
         ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/img/favicon.ico'))
+        <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/img/favicon.ico'])
             ->prependStylesheet($this->basePath() . '/assets/css/style.min.css')  ?>
 
         <!-- Scripts -->
@@ -31,7 +28,7 @@ x<!-- TODO navigation -->
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Undefined Source</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Admin Zend</a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <?php echo $this->navigation('navigation')->menu()->setPartial('partials/navigation-top.phtml');
@@ -41,9 +38,9 @@ x<!-- TODO navigation -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo ($this->UserIdentity()->getPerfil()->getName()) ? $this->UserIdentity()->getPerfil()->getName() : $this->UserIdentity()->getUsername() ; ?>! <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Meus Dados</a></li>
+                                    <li><a href="#">Settings</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo $this->url('user-auth/default', array('action' => 'logout')) ?>">Logout</a></li>
+                                    <li><a href="<?php echo $this->url('user-auth/default', ['action' => 'logout']) ?>">Logout</a></li>
                                 </ul>
                             </li>
                         <?php else: ?>
@@ -57,9 +54,9 @@ x<!-- TODO navigation -->
             </div><!-- /.container -->
         </nav>
         <!-- MAIN CONTENT -->
-        <div class="container" style="padding-top: 80px;">
+        <div class="container">
             <?php echo $this->content; ?>
-            <div class="text-center col-xs-12"><?php echo $this->Version(); ?></div>
+            <div class="text-center col-xs-12">&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. All rights reserved.</div>
         </div>
 
         <!-- END MAIN CONTENT -->

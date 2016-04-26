@@ -1,80 +1,68 @@
-<div class="row">
+<h1>An error occurred</h1>
+<h2><?php echo $this->message ?></h2>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="text-center error-box">
-                    <h1 class="error-text tada animated"><i class="fa fa-times-circle text-danger error-icon-shadow"></i> <?php echo $this->translate('An error occurred') ?></h1>
-                    <h2 class="font-xl"><strong><?php echo $this->message ?></strong></h2>
-                    <br />
-                </div>
-                    <p class="lead semi-bold">
-                        <?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
-
-                        <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
-                        <hr/>
-                        <h2><?php echo $this->translate('Additional information') ?>:</h2>
-                        <h3><?php echo get_class($this->exception); ?></h3>
+    <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
+        <hr/>
+        <h2>Additional information:</h2>
+        <h3><?php echo get_class($this->exception); ?></h3>
+        <dl>
+            <dt>File:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
+            </dd>
+            <dt>Message:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getMessage()) ?></pre>
+            </dd>
+            <dt>Stack trace:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getTraceAsString()) ?></pre>
+            </dd>
+        </dl>
+        <?php
+        $e = $this->exception->getPrevious();
+        $icount = 0;
+        if ($e) :
+            ?>
+            <hr/>
+            <h2>Previous exceptions:</h2>
+            <ul class="unstyled">
+                <?php while($e) : ?>
+                    <li>
+                        <h3><?php echo get_class($e); ?></h3>
                         <dl>
-                            <dt><?php echo $this->translate('File') ?>:</dt>
+                            <dt>File:</dt>
                             <dd>
-                                <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
+                                <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
                             </dd>
-                            <dt><?php echo $this->translate('Message') ?>:</dt>
+                            <dt>Message:</dt>
                             <dd>
-                                <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
+                                <pre class="prettyprint linenums"><?php echo $this->escapeHtml($e->getMessage()) ?></pre>
                             </dd>
-                            <dt><?php echo $this->translate('Stack trace') ?>:</dt>
+                            <dt>Stack trace:</dt>
                             <dd>
-                                <pre class="prettyprint linenums"><?php echo $this->exception->getTraceAsString() ?></pre>
+                                <pre class="prettyprint linenums"><?php echo $this->escapeHtml($e->getTraceAsString()) ?></pre>
                             </dd>
                         </dl>
-                        <?php
-                            $e = $this->exception->getPrevious();
-                            if ($e) :
-                        ?>
-                        <hr/>
-                        <h2><?php echo $this->translate('Previous exceptions') ?>:</h2>
-                        <ul class="unstyled">
-                            <?php while($e) : ?>
-                            <li>
-                                <h3><?php echo get_class($e); ?></h3>
-                                <dl>
-                                    <dt><?php echo $this->translate('File') ?>:</dt>
-                                    <dd>
-                                        <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
-                                    </dd>
-                                    <dt><?php echo $this->translate('Message') ?>:</dt>
-                                    <dd>
-                                        <pre class="prettyprint linenums"><?php echo $e->getMessage() ?></pre>
-                                    </dd>
-                                    <dt><?php echo $this->translate('Stack trace') ?>:</dt>
-                                    <dd>
-                                        <pre class="prettyprint linenums"><?php echo $e->getTraceAsString() ?></pre>
-                                    </dd>
-                                </dl>
-                            </li>
-                            <?php
-                                $e = $e->getPrevious();
-                                endwhile;
-                            ?>
-                        </ul>
-                        <?php endif; ?>
+                    </li>
+                    <?php
+                    $e = $e->getPrevious();
+                    $icount += 1;
+                    if ($icount >= 50) {
+                        echo "<li>There may be more exceptions, but we have no enough memory to proccess it.</li>";
+                        break;
+                    }
+                endwhile;
+                ?>
+            </ul>
+        <?php endif; ?>
 
-                        <?php else: ?>
+    <?php else: ?>
 
-                        <h3><?php echo $this->translate('No Exception available') ?></h3>
+        <h3>No Exception available</h3>
 
-                        <?php endif ?>
+    <?php endif ?>
 
-                        <?php endif ?>
-
-                    </p>
-
-            </div>
-
-        </div>
-
-    </div>
-</div>
+<?php endif ?>

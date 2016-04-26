@@ -1,88 +1,67 @@
 <?php
 
-return array(
-    'version' => '© 2014 By Jhon Mike. https://github.com/jhonmike',
-    'router' => array(
-        'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
+namespace Application;
+
+use Zend\ServiceManager\Factory\InvokableFactory;
+
+return [
+    'router' => [
+        'routes' => [
+            'home' => [
+                'type' => 'Zend\Router\Http\Literal',
+                'options' => [
                     'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'dashboard' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'index'
+                    ],
+                ],
+            ],
+            'dashboard' => [
+                'type' => 'Zend\Router\Http\Literal',
+                'options' => [
                     'route'    => '/admin/dashboard',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'dashboard',
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'navigation' => array(
-        'default' => array(
-            array(
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'IndexController',
+                        'action'     => 'dashboard'
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'controllers' => [
+        'abstract_factories' => [
+            'factories' => [
+                'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+                Controller\IndexController::class => InvokableFactory::class,
+                'Zend\Log\LoggerAbstractServiceFactory'
+            ],
+        ],
+    ],
+    'navigation' => [
+        'default' => [
+            [
                 'label' => 'Dashboard',
                 'route' => 'dashboard',
                 'resource'=> 'Application\Controller\Index',
-                'privilege'=> 'view',
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-        ),
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'aliases' => array(
-            'translator' => 'MvcTranslator',
-        ),
-    ),
-    'translator' => array(
-        'locale' => 'pt_BR',
-        'translation_file_patterns' => array(
-            array(
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-        ),
-    ),
-    'view_manager' => array(
+                'privilege'=> 'view'
+            ],
+        ],
+    ],
+    'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
+        'template_map' => [
             'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
-            'error/index'           => __DIR__ . '/../view/error/index.phtml',
-        ),
-        'template_path_stack' => array(
-            __DIR__ . '/../view',
-        ),
-    ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
-        ),
-    ),
-);
+            'error/index'           => __DIR__ . '/../view/error/index.phtml'
+        ],
+        'template_path_stack' => [
+            __DIR__ . '/../view'
+        ]
+    ]
+];
