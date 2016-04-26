@@ -1,21 +1,35 @@
 {
-    "name": "Full-Stack Zend2/Doctrine2",
-    "description": "Estrutura base de desenvolvimento Zend",
-    "homepage": "http://undefinedsource.github.io/",
-    "keywords": ["framework","zf2","skeleton"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jhon Mike Soares",
-            "email": "developer@jhonmike.com.br",
-            "homepage": "http://www.jhonmike.com.br",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.3",
-        "jhonmike/zf2-base": "dev-master",
-        "jhonmike/zf2-acl": "dev-master",
-        "jhonmike/zf2-user": "dev-master"
+  "name": "StartAppZend2",
+  "description": "Structure base Zend development",
+  "homepage": "http://jhonmike.github.io/",
+  "keywords": ["framework","zf2","skeleton"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jhon Mike Soares",
+      "email": "developer@jhonmike.com.br",
+      "homepage": "http://www.jhonmike.com.br",
+      "role": "Developer"
     }
+  ],
+  "scripts": {
+    "start": "php -S 0.0.0.0:8080 -t public/ public/index.php",
+    "orm:create": "php vendor/bin/doctrine-module orm:schema-tool:create",
+    "orm:drop": "php vendor/bin/doctrine-module orm:schema-tool:drop --force",
+    "orm:fixture": "php vendor/bin/doctrine-module data-fixture:import",
+    "phpunit": "php vendor/bin/phpunit",
+    "test": "composer orm:drop \n composer orm:create \n composer phpunit"
+  },
+  "require": {
+    "php": ">=5.5",
+    "zendframework/zendframework": "2.5.*",
+    "doctrine/doctrine-orm-module": "0.*",
+    "jhonmike/zf2-base": "dev-master",
+    "jhonmike/zf2-acl": "dev-master",
+    "jhonmike/zf2-user": "dev-master"
+  },
+  "require-dev": {
+    "hounddog/doctrine-data-fixture-module": "0.0.*",
+    "phpunit/phpunit": "^5.2"
+  }
 }
