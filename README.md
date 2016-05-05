@@ -1,4 +1,4 @@
-# Full-Stack Zend2/Doctrine2
+# App Example Zend3/Doctrine2
 
 ## 1. Dependencias de Instalação
 ### Composer
@@ -12,10 +12,10 @@
 
 ## 2. GIT Clone, Baixe o Repositorio
 
-    SSH: git clone git@github.com:jhonmike/StartAppZend2.git
+    SSH: git clone git@github.com:jhonmike/StartAppZend3.git
     OR
-    HTTP: git clone https://github.com/jhonmike/StartAppZend2.git
-    cd StartAppZend2
+    HTTP: git clone https://github.com/jhonmike/StartAppZend3.git
+    cd StartAppZend3
 
 ## 3. Instalação
 
@@ -29,45 +29,26 @@ DUPLIQUE o arquivo config/autoload/doctrine_orm.local.php.dist para config/autol
 
 ## 5. Criando o banco e alimentando as tabelas com os seguintes comandos
 
-linux/osx
-
-    php vendor/bin/doctrine-module orm:schema-tool:create
-    php vendor/bin/doctrine-module data-fixture:import
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:create
-    vendor\bin\doctrine-module data-fixture:import
+    composer orm:create
+    composer orm:fixture
 
 ## 6. Acesso Pre Cadastrados
 
 Developer
 
     Login: developer
-    Senha: 123456
+    Password: 123456
 
 Administrator
 
     Login: admin
-    Senha: 123456
+    Password: 123456
 
 ## Outros Comandos
 ### Atualizar banco
 
-linux/osx
-
-    php vendor/bin/doctrine-module orm:schema-tool:update --force
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:update --force
+    composer orm:update
 
 ### Apagar banco
 
-linux/osx
-
-    php vendor/bin/doctrine-module orm:schema-tool:drop --force
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:drop --force
+    composer orm:drop

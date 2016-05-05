@@ -31,23 +31,24 @@
                     <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Admin Zend</a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <?php echo $this->navigation('navigation')->menu()->setPartial('partials/navigation-top.phtml');
-                    ?>
+                    <ul class="nav navbar-nav">
+                        <li>XPTO</li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <?php if ($this->UserIdentity()) : ?>
+                        <?php //if ($this->UserIdentity()) : ?>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo ($this->UserIdentity()->getPerfil()->getName()) ? $this->UserIdentity()->getPerfil()->getName() : $this->UserIdentity()->getUsername() ; ?>! <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php //echo ($this->UserIdentity()->getPerfil()->getName()) ? $this->UserIdentity()->getPerfil()->getName() : $this->UserIdentity()->getUsername() ; ?>! <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Settings</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo $this->url('user-auth/default', ['action' => 'logout']) ?>">Logout</a></li>
+                                    <li><a href="<?php //echo $this->url('user-auth/default', ['action' => 'logout']) ?>">Logout</a></li>
                                 </ul>
                             </li>
-                        <?php else: ?>
+                        <?php //else: ?>
                             <li>
-                                <a href="<?php echo $this->url('user-auth') ?>">Login</a>
+                                <a href="<?php //echo $this->url('user-auth') ?>">Login</a>
                             </li>
-                        <?php endif; ?>
+                        <?php //endif; ?>
                     </ul>
                 </div>
 

@@ -24,16 +24,14 @@
     "php": "^5.6 || ^7.0",
     "zendframework/zend-component-installer": "^0.1.0",
     "zendframework/zend-config": "^2.6",
-    "zendframework/zend-mvc": "^3.0.0@dev",
-    "doctrine/dbal": "2.5.*",
-    "doctrine/orm": "2.5.*",
-    "jhonmike/zf2-base": "dev-master",
-    "jhonmike/zf2-acl": "dev-master",
-    "jhonmike/zf2-user": "dev-master"
+    "zendframework/zend-mvc": "^3.0.0@dev"
+    "doctrine/doctrine-module": "0.*",
+    "jhonmike/zf-base": "dev-master",
+    "jhonmike/zf-acl": "dev-master",
+    "jhonmike/zf-user": "dev-master"
   },
   "require-dev": {
     "doctrine/data-fixtures": "1.1.*",
-    "doctrine/migrations": "1.0.*@dev",
     "phpunit/phpunit": "^5.2"
   },
   "autoload": {

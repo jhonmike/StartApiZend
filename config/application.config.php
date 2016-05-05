@@ -5,12 +5,11 @@ return [
         'Zend\Router',
         'Zend\Validator',
         'Application',
-        'DoctrineModule',
-        'DoctrineORMModule',
-        'DoctrineDataFixtureModule',
-        'Zf2Base',
-        'Zf2Acl',
-        'Zf2User'
+//        'DoctrineModule',
+//        'DoctrineORMModule'
+//        'ZfBase',
+//        'ZfAcl',
+//        'ZfUser'
     ],
 
     // These are various options for the listeners attached to the ModuleManager

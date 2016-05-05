@@ -2,13 +2,14 @@
 
 namespace Application;
 
+use Zend\Router\Http\Literal;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
         'routes' => [
             'home' => [
-                'type' => 'Zend\Router\Http\Literal',
+                'type' => Literal::class,
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
@@ -18,12 +19,11 @@ return [
                 ],
             ],
             'dashboard' => [
-                'type' => 'Zend\Router\Http\Literal',
+                'type' => Literal::class,
                 'options' => [
                     'route'    => '/admin/dashboard',
                     'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'IndexController',
+                        'controller' => Controller\IndexController::class,
                         'action'     => 'dashboard'
                     ],
                 ],
@@ -31,22 +31,8 @@ return [
         ],
     ],
     'controllers' => [
-        'abstract_factories' => [
-            'factories' => [
-                'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-                Controller\IndexController::class => InvokableFactory::class,
-                'Zend\Log\LoggerAbstractServiceFactory'
-            ],
-        ],
-    ],
-    'navigation' => [
-        'default' => [
-            [
-                'label' => 'Dashboard',
-                'route' => 'dashboard',
-                'resource'=> 'Application\Controller\Index',
-                'privilege'=> 'view'
-            ],
+        'factories' => [
+            Controller\IndexController::class => InvokableFactory::class
         ],
     ],
     'view_manager' => [
