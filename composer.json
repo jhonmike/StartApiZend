@@ -3,7 +3,7 @@
   "description": "Structure base Zend development",
   "homepage": "http://jhonmike.github.io/",
   "keywords": ["framework","zf3","skeleton", "zend3"],
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "authors": [
     {
       "name": "Jhon Mike Soares",
@@ -25,14 +25,6 @@
     "zendframework/zend-component-installer": "^0.1.0",
     "zendframework/zend-config": "^2.6",
     "zendframework/zend-mvc": "^3.0.0@dev"
-    "doctrine/doctrine-module": "0.*",
-    "jhonmike/zf-base": "dev-master",
-    "jhonmike/zf-acl": "dev-master",
-    "jhonmike/zf-user": "dev-master"
-  },
-  "require-dev": {
-    "doctrine/data-fixtures": "1.1.*",
-    "phpunit/phpunit": "^5.2"
   },
   "autoload": {
     "psr-4": {
