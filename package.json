@@ -1,10 +1,10 @@
 {
-  "name": "StartAppZend2",
+  "name": "StartAppZend3",
   "version": "0.0.1",
-  "description": "Front app zend2.",
+  "description": "Front app zend3.",
   "homepage": "http://jhonmike.github.io/",
   "bugs": {
-    "url": "https://github.com/jhonmike/StartAppZend2/issues",
+    "url": "https://github.com/jhonmike/StartAppZend3/issues",
     "email": "developer@jhonmike.com.br"
   },
   "author": "Jhon Mike Soares <developer@jhonmike.com.br>",
