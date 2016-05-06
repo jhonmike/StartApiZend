@@ -1,13 +1,7 @@
 <div class="jumbotron">
-    <h1><?php echo sprintf('Welcome to %sZend Framework 3%s', '<span class="zf-green">', '</span>') ?></h1>
-    <p>Skeleton Zend 3 + Admin + Authentication + Acl + Register User.') ?></p>
-    <p>Its Login => Login: developer Password:123456') ?></p>
-    <p>Access your customer => Login: admin Password:123456') ?></p>
-    <p>Access the employee of his client => Login: functionary Password:123456') ?></p>
-    <p>Access your customer's customer => Login: client Password:123456 obs: no active") ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/jhonmike/StartAppZend3" target="_blank">Fork Admin on GitHub &raquo;</a>
-    <a class="btn btn-success btn-lg" href="<?php echo $this->url('user-auth'); ?>">Login &raquo;</a>
-    <a class="btn btn-success btn-lg" href="<?php echo $this->url('user-auth/default',array('action'=>'register')); ?>">Register &raquo;</a></p>
+    <h1><?php echo sprintf('Welcome to %sZend Framework%s', '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php echo sprintf('Congratulations! You have successfully installed the %sZF Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF.', '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Application\Module::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank">Fork Zend Framework on GitHub &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -15,11 +9,11 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">ZfBase</h3>
+                <h3 class="panel-title">Follow Development</h3>
             </div>
             <div class="panel-body">
-                <p>CrudController, Mail, AbstractService, AbstractUpload</p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/zf-base" target="_blank">ZfBase &raquo;</a></p>
+                <p><?php echo sprintf('Zend Framework is under active development. If you are interested in following the development of ZF, you can check  %sZF dev blog%s, and %sZF issue tracker%s (links require a GitHub account). This is a great resource for staying up to date with the latest developments!', '<a href="http://framework.zend.com/blog/index.html">', '</a>', '<a href="https://github.com/issues?utf8=%E2%9C%93&q=is:issue+org:zendframework">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/" target="_blank">ZF Development Portal &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -27,11 +21,11 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">ZfAcl</h3>
+                <h3 class="panel-title">Discover Modules</h3>
             </div>
             <div class="panel-body">
-                <p>Role, Resource, Privilege</p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/zf-acl" target="_blank">ZfAcl &raquo;</a></p>
+                <p><?php echo sprintf('The community is working on developing a community site to serve as a repository and gallery for ZF modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF.', '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank">Explore ZF Modules &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -39,11 +33,11 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">ZfUser</h3>
+                <h3 class="panel-title">Help &amp; Support</h3>
             </div>
             <div class="panel-body">
-                <p>User, Authentication</p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/zf-user" target="_blank">ZfUser &raquo;</a></p>
+                <p><?php echo sprintf('If you need any help or support while developing with ZF, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding this release. Alternatively, you may subscribe and post questions to the %smailing lists%s.', '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/archives/">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank">Ping us on IRC &raquo;</a></p>
             </div>
         </div>
     </div>

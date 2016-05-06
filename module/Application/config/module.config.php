@@ -1,30 +1,54 @@
 <?php
+/**
+ * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 
 namespace Application;
 
-use Zend\Router\Http\Literal;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
         'routes' => [
             'home' => [
-                'type' => Literal::class,
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index'
+                        'action'     => 'index',
                     ],
                 ],
             ],
-            'dashboard' => [
-                'type' => Literal::class,
+            // The following is a route to simplify getting started creating
+            // new controllers and actions without needing to create a new
+            // module. Simply drop new controllers in, and you can access them
+            // using the path /application/:controller/:action
+            'application' => [
+                'type'    => 'Literal',
                 'options' => [
-                    'route'    => '/admin/dashboard',
+                    'route'    => '/application',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'dashboard'
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'IndexController',
+                        'action'        => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'default' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => [
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                            ],
+                        ],
                     ],
                 ],
             ],
