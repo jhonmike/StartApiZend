@@ -1,34 +1,24 @@
 {
-  "name": "StartAppZend3",
-  "description": "Structure base Zend development",
-  "homepage": "http://jhonmike.github.io/",
-  "keywords": ["framework","zf3","skeleton", "zend3"],
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Jhon Mike Soares",
-      "email": "developer@jhonmike.com.br",
-      "homepage": "http://www.jhonmike.com.br",
-      "role": "Developer"
+    "name": "zendframework/skeleton-application",
+    "description": "Skeleton Application for ZF2",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "zendframework/zend-component-installer": "^0.1.0",
+        "zendframework/zend-config": "^2.6",
+        "zendframework/zend-mvc": "^3.0.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php"
     }
-  ],
-  "scripts": {
-    "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php",
-    "orm:create": "php vendor/bin/doctrine-module orm:schema-tool:create",
-    "orm:drop": "php vendor/bin/doctrine-module orm:schema-tool:drop --force",
-    "orm:fixture": "php vendor/bin/doctrine-module data-fixture:import",
-    "phpunit": "php vendor/bin/phpunit",
-    "test": "composer orm:drop \n composer orm:create \n composer phpunit"
-  },
-  "require": {
-    "php": "^5.6 || ^7.0",
-    "zendframework/zend-component-installer": "^0.1.0",
-    "zendframework/zend-config": "^2.6",
-    "zendframework/zend-mvc": "^3.0.0@dev"
-  },
-  "autoload": {
-    "psr-4": {
-      "Application\\": "module/Application/src/"
-    }
-  }
 }
