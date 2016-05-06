@@ -1,15 +1,49 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jhon
- * Date: 06/05/16
- * Time: 00:59
- */
 
 namespace ZfBase\src;
 
+use Zend\Mvc\Controller\AbstractRestfulController as ZendAbstractRestfulController;
+use Zend\View\Model\JsonModel;
 
-class AbstractRestController
+/**
+ * Class AbstractRestController
+ * @package ZfBase\src
+ * @author Jhon Mike <developer@jhonmike.com.br>
+ */
+abstract class AbstractRestfulController extends ZendAbstractRestfulController
 {
+    private $em;
+    private $entity;
+    private $service;
 
+    public function indexAction()
+    {
+        return new JsonModel();
+    }
+
+    public function createAction()
+    {
+        return new JsonModel();
+    }
+
+    public function readAction()
+    {
+        $id = $this->params()->fromRoute('id');
+
+        return new JsonModel();
+    }
+
+    public function updateAction()
+    {
+        $id = $this->params()->fromRoute('id');
+
+        return new JsonModel();
+    }
+
+    public function deleteAction()
+    {
+        $id = $this->params()->fromRoute('id');
+
+        return new JsonModel();
+    }
 }

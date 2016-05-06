@@ -1,25 +1,14 @@
 <?php
+
+namespace ZfBase;
+
 /**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * Class Module
+ * @package ZfBase
+ * @author Jhon Mike <developer@jhonmike.com.br>
  */
-
-namespace Application;
-
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-
 class Module
 {
-    const VERSION = '3.0.0dev';
-
-    public function onBootstrap(MvcEvent $e)
-    {
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($e->getApplication()->getEventManager());
-    }
-
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
