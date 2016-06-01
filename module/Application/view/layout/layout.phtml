@@ -12,13 +12,16 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
-                        ->prependStylesheet($this->basePath('node_modules/font-awesome/css/font-awesome.min.css'))
-                        ->prependStylesheet($this->basePath('node_modules/bootstrap/dist/css/bootstrap.min.css')) ?>
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath('node_modules/bootstrap/dist/js/bootstrap.min.js'))
-            ->prependFile($this->basePath('node_modules/jquery/dist/jquery.min.js'))
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', ['conditional' => 'lt IE 9',])
+            ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', ['conditional' => 'lt IE 9',])
         ; ?>
 
     </head>
