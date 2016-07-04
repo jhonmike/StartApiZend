@@ -1,73 +1,72 @@
-# Full-Stack Zend2/Doctrine2
+# Api Example Zend3/Doctrine2
 
-## 1. Dependencias de Instalação
-### Composer
+## 1. GIT Clone, Baixe o Repositorio
 
-    curl -sS https://getcomposer.org/installer | php
-    mv composer.phar /usr/local/bin/composer
-
-### Gulp
-
-    npm install -g gulp
-
-## 2. GIT Clone, Baixe o Repositorio
-
-    SSH: git clone git@github.com:jhonmike/StartAppZend2.git
+    SSH: git clone git@github.com:jhonmike/StartApiZend3.git
     OR
-    HTTP: git clone https://github.com/jhonmike/StartAppZend2.git
-    cd StartAppZend2
+    HTTP: git clone https://github.com/jhonmike/StartApiZend3.git
+    cd StartApiZend3
 
-## 3. Instalação
+## 2. Instalação local
 
-    composer install
-    npm install
-    gulp
+Para executar local basta instalar o composer e executalo!
 
-## 4. Config base de dados
+```bash
+$ curl -sS https://getcomposer.org/installer | php
+$ mv composer.phar /usr/local/bin/composer
+$ composer install
+$ composer start
+```
+
+## 2. Instalação docker
+
+This skeleton provides a `docker-compose.yml` for use with
+[docker-compose](https://docs.docker.com/compose/); it
+uses the `Dockerfile` provided as its base. Build and start the image using:
+
+```bash
+$ docker-compose up -d --build
+```
+
+You can also run composer from the image. The container environment is named
+"zf", so you will pass that value to `docker-compose run`:
+
+```bash
+$ docker-compose run zf composer install
+```
+
+## 3. Config base de dados
 
 DUPLIQUE o arquivo config/autoload/doctrine_orm.local.php.dist para config/autoload/doctrine_orm.local.php e edite as configurações do banco
 
-## 5. Criando o banco e alimentando as tabelas com os seguintes comandos
+## 4. Criando o banco e alimentando as tabelas com os seguintes comandos
 
-linux/osx
+```bash
+$ composer orm:create
+$ composer orm:fixture
+```
 
-    php vendor/bin/doctrine-module orm:schema-tool:create
-    php vendor/bin/doctrine-module data-fixture:import
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:create
-    vendor\bin\doctrine-module data-fixture:import
-
-## 6. Acesso Pre Cadastrados
+## 5. Acesso Pre Cadastrados http://localhost:8080
 
 Developer
 
     Login: developer
-    Senha: 123456
+    Password: 123456
 
 Administrator
 
     Login: admin
-    Senha: 123456
+    Password: 123456
 
 ## Outros Comandos
 ### Atualizar banco
 
-linux/osx
-
-    php vendor/bin/doctrine-module orm:schema-tool:update --force
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:update --force
+```bash
+$ composer orm:update
+```
 
 ### Apagar banco
 
-linux/osx
-
-    php vendor/bin/doctrine-module orm:schema-tool:drop --force
-
-windows
-
-    vendor\bin\doctrine-module orm:schema-tool:drop --force
+```bash
+$ composer orm:drop
+```

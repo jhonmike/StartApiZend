@@ -1,13 +1,15 @@
 <div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo $this->translate('Skeleton Zend 2 + Admin + Authentication + Acl + Register User.') ?></p>
-    <p><?php echo $this->translate('Its Login => Login: developer Password:123456') ?></p>
-    <p><?php echo $this->translate('Access your customer => Login: admin Password:123456') ?></p>
-    <p><?php echo $this->translate('Access the employee of his client => Login: functionary Password:123456') ?></p>
-    <p><?php echo $this->translate("Access your customer's customer => Login: client Password:123456 obs: no active") ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/undefinedsource/fs-zend2" target="_blank"><?php echo $this->translate('Fork Admin on GitHub') ?> &raquo;</a>
-    <a class="btn btn-success btn-lg" href="<?php echo $this->url('user-auth'); ?>"><?php echo $this->translate('Login') ?> &raquo;</a>
-    <a class="btn btn-success btn-lg" href="<?php echo $this->url('user-auth/default',array('action'=>'register')); ?>"><?php echo $this->translate('Register') ?> &raquo;</a></p>
+    <h1>Welcome to <span class="zf-green">Zend Framework</span></h1>
+
+    <p>
+        Congratulations! You have successfully installed the
+        <a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">ZF Skeleton Application</a>.
+        You are currently running Zend Framework version <?= \Application\Module::VERSION ?>.
+        This skeleton can serve as a simple starting point for you to begin
+        building your application on ZF.
+    </p>
+
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank">Fork Zend Framework on GitHub &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -15,11 +17,19 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo 'Zf2Base' ?></h3>
+                <h3 class="panel-title">Follow Development</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo $this->translate('CrudController, Mail, AbstractService, AbstractUpload') ?></p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/Zf2Base" target="_blank"><?php echo 'Zf2Base' ?> &raquo;</a></p>
+                <p>
+                    Zend Framework is under active development. If you are
+                    interested in following the development of ZF, you can check
+                    <a href="http://framework.zend.com/blog/">ZF dev blog</a>,
+                    and <a href="https://github.com/issues?utf8=%E2%9C%93&q=is:issue+org:zendframework">ZF issue tracker</a>
+                    (link requires a GitHub account). This is a great resource
+                    for staying up to date with the latest developments!
+                </p>
+
+                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/" target="_blank">ZF Development Portal &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -27,11 +37,18 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo 'Zf2Acl' ?></h3>
+                <h3 class="panel-title">Discover Modules</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo $this->translate('Role, Resource, Privilege') ?></p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/Zf2Acl" target="_blank"><?php echo 'Zf2Acl' ?> &raquo;</a></p>
+                <p>
+                    The community is working on developing a community site to
+                    serve as a repository and gallery for ZF modules. The
+                    project is available <a href="https://github.com/zendframework/modules.zendframework.com">on GitHub</a>.
+                    The site is currently live and currently contains a list of
+                    some of the modules already available for ZF.
+                </p>
+
+                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank">Explore ZF Modules &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -39,11 +56,18 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo 'Zf2User' ?></h3>
+                <h3 class="panel-title">Help &amp; Support</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo $this->translate('User, Authentication') ?></p>
-                <p><a class="btn btn-success pull-right" href="https://github.com/jhonmike/Zf2User" target="_blank"><?php echo 'Zf2User' ?> &raquo;</a></p>
+                <p>
+                    If you need any help or support while developing with ZF,
+                    you may reach us via IRC: <a href="irc://irc.freenode.net/zftalk">#zftalk on Freenode</a>.
+                    We'd love to hear any questions or feedback you may have
+                    regarding this release. Alternatively, you may subscribe
+                    and post questions to the <a href="http://framework.zend.com/archives/">mailing lists</a>.
+                </p>
+
+                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank">Ping us on IRC &raquo;</a></p>
             </div>
         </div>
     </div>

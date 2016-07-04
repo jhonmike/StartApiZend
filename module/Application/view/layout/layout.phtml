@@ -1,10 +1,9 @@
-x<!-- TODO navigation -->
 <?php echo $this->doctype(); ?>
 
-<html lang="pt-BR">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('US Zend2')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('ZF Skeleton Application')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -12,58 +11,45 @@ x<!-- TODO navigation -->
         ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/img/favicon.ico'))
-            ->prependStylesheet($this->basePath() . '/assets/css/style.min.css')  ?>
+        <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependScript("var basePath = '".$this->basePath()."'" )
-            ->prependFile($this->basePath() . '/assets/js/script.min.js')  ?>
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', ['conditional' => 'lt IE 9',])
+            ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', ['conditional' => 'lt IE 9',])
+        ; ?>
+
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Undefined Source</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;Skeleton Application</a>
                 </div>
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <?php echo $this->navigation('navigation')->menu()->setPartial('partials/navigation-top.phtml');
-                    ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <?php if ($this->UserIdentity()) : ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo ($this->UserIdentity()->getPerfil()->getName()) ? $this->UserIdentity()->getPerfil()->getName() : $this->UserIdentity()->getUsername() ; ?>! <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Meus Dados</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="<?php echo $this->url('user-auth/default', array('action' => 'logout')) ?>">Logout</a></li>
-                                </ul>
-                            </li>
-                        <?php else: ?>
-                            <li>
-                                <a href="<?php echo $this->url('user-auth') ?>">Login</a>
-                            </li>
-                        <?php endif; ?>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('home') ?>">Home</a></li>
                     </ul>
-                </div>
-
-            </div><!-- /.container -->
+                </div><!--/.nav-collapse -->
+            </div>
         </nav>
-        <!-- MAIN CONTENT -->
-        <div class="container" style="padding-top: 80px;">
+        <div class="container">
             <?php echo $this->content; ?>
-            <div class="text-center col-xs-12"><?php echo $this->Version(); ?></div>
-        </div>
-
-        <!-- END MAIN CONTENT -->
-
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. All rights reserved.</p>
+            </footer>
+        </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

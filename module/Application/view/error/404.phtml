@@ -1,599 +1,113 @@
-<style>
-    .error-text-2 {
-        text-align: center;
-        font-size: 700%;
-        font-weight: bold;
-        font-weight: 100;
-        color: #333;
-        line-height: 1;
-        letter-spacing: -.05em;
-        background-image: -webkit-linear-gradient(92deg,#333,#ed1c24);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .particle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 100%;
-        background-color: #ed1c24;
-        background-image: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.3) 75%,rgba(0,0,0,0));
-        box-shadow: inset 0 0 1px 1px rgba(0,0,0,.25);
-    }
-    .particle--a {
-        -webkit-animation: particle-a 1.4s infinite linear;
-        -moz-animation: particle-a 1.4s infinite linear;
-        -o-animation: particle-a 1.4s infinite linear;
-        animation: particle-a 1.4s infinite linear;
-    }
-    .particle--b {
-        -webkit-animation: particle-b 1.3s infinite linear;
-        -moz-animation: particle-b 1.3s infinite linear;
-        -o-animation: particle-b 1.3s infinite linear;
-        animation: particle-b 1.3s infinite linear;
-        background-color: #00A300;
-    }
-    .particle--c {
-        -webkit-animation: particle-c 1.5s infinite linear;
-        -moz-animation: particle-c 1.5s infinite linear;
-        -o-animation: particle-c 1.5s infinite linear;
-        animation: particle-c 1.5s infinite linear;
-        background-color: #57889C;
-    }
-    @-webkit-keyframes particle-a {
-        0% {
-        -webkit-transform: translate3D(-3rem,-3rem,0);
-        z-index: 1;
-        -webkit-animation-timing-function: ease-in-out;
-        } 
-
-        25% {
-        width: 1.5rem;
-        height: 1.5rem;
-        }
-
-        50% {
-        -webkit-transform: translate3D(4rem, 3rem, 0);
-        opacity: 1;
-        z-index: 1;
-        -webkit-animation-timing-function: ease-in-out;
-        }
-
-        55% {
-        z-index: -1;
-        }
-
-        75% {
-        width: .75rem;
-        height: .75rem;
-        opacity: .5;
-        }
-
-        100% {
-        -webkit-transform: translate3D(-3rem,-3rem,0);
-        z-index: -1;
-        }
-    }
-
-    @-moz-keyframes particle-a {
-    0% {
-    -moz-transform: translate3D(-3rem,-3rem,0);
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    -moz-transform: translate3D(4rem, 3rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .75rem;
-    height: .75rem;
-    opacity: .5;
-    }
-
-    100% {
-    -moz-transform: translate3D(-3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-o-keyframes particle-a {
-    0% {
-    -o-transform: translate3D(-3rem,-3rem,0);
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    -o-transform: translate3D(4rem, 3rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .75rem;
-    height: .75rem;
-    opacity: .5;
-    }
-
-    100% {
-    -o-transform: translate3D(-3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @keyframes particle-a {
-    0% {
-    transform: translate3D(-3rem,-3rem,0);
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    transform: translate3D(4rem, 3rem, 0);
-    opacity: 1;
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .75rem;
-    height: .75rem;
-    opacity: .5;
-    }
-
-    100% {
-    transform: translate3D(-3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-webkit-keyframes particle-b {
-    0% {
-    -webkit-transform: translate3D(3rem,-3rem,0);
-    z-index: 1;
-    -webkit-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    -webkit-transform: translate3D(-3rem, 3.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -webkit-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -webkit-transform: translate3D(3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-moz-keyframes particle-b {
-    0% {
-    -moz-transform: translate3D(3rem,-3rem,0);
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    -moz-transform: translate3D(-3rem, 3.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -moz-transform: translate3D(3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-o-keyframes particle-b {
-    0% {
-    -o-transform: translate3D(3rem,-3rem,0);
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    -o-transform: translate3D(-3rem, 3.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -o-transform: translate3D(3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @keyframes particle-b {
-    0% {
-    transform: translate3D(3rem,-3rem,0);
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.5rem;
-    height: 1.5rem;
-    }
-
-    50% {
-    transform: translate3D(-3rem, 3.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    transform: translate3D(3rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-webkit-keyframes particle-c {
-    0% {
-    -webkit-transform: translate3D(-1rem,-3rem,0);
-    z-index: 1;
-    -webkit-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.3rem;
-    height: 1.3rem;
-    }
-
-    50% {
-    -webkit-transform: translate3D(2rem, 2.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -webkit-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -webkit-transform: translate3D(-1rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-moz-keyframes particle-c {
-    0% {
-    -moz-transform: translate3D(-1rem,-3rem,0);
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.3rem;
-    height: 1.3rem;
-    }
-
-    50% {
-    -moz-transform: translate3D(2rem, 2.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -moz-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -moz-transform: translate3D(-1rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @-o-keyframes particle-c {
-    0% {
-    -o-transform: translate3D(-1rem,-3rem,0);
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.3rem;
-    height: 1.3rem;
-    }
-
-    50% {
-    -o-transform: translate3D(2rem, 2.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    -o-animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    -o-transform: translate3D(-1rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-
-    @keyframes particle-c {
-    0% {
-    transform: translate3D(-1rem,-3rem,0);
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    25% {
-    width: 1.3rem;
-    height: 1.3rem;
-    }
-
-    50% {
-    transform: translate3D(2rem, 2.5rem, 0);
-    opacity: 1;
-    z-index: 1;
-    animation-timing-function: ease-in-out;
-    }
-
-    55% {
-    z-index: -1;
-    }
-
-    75% {
-    width: .5rem;
-    height: .5rem;
-    opacity: .5;
-    }
-
-    100% {
-    transform: translate3D(-1rem,-3rem,0);
-    z-index: -1;
-    }
-    }
-</style>
-
-<!--[if IE 9]>
-<style>
-.error-text {
-    color: #333 !important;
+<h1>A 404 error occurred</h1>
+<h2><?php echo $this->message ?></h2>
+
+<?php if (isset($this->reason) && $this->reason): ?>
+
+<?php
+$reasonMessage= '';
+switch ($this->reason) {
+    case 'error-controller-cannot-dispatch':
+        $reasonMessage = 'The requested controller was unable to dispatch the request.';
+        break;
+    case 'error-controller-not-found':
+        $reasonMessage = 'The requested controller could not be mapped to an existing controller class.';
+        break;
+    case 'error-controller-invalid':
+        $reasonMessage = 'The requested controller was not dispatchable.';
+        break;
+    case 'error-router-no-match':
+        $reasonMessage = 'The requested URL could not be matched by routing.';
+        break;
+    default:
+        $reasonMessage = 'We cannot determine at this time why a 404 was generated.';
+        break;
 }
-.particle {
-    display:none;
+?>
+
+<p><?php echo $reasonMessage ?></p>
+
+<?php endif ?>
+
+<?php if (isset($this->controller) && $this->controller): ?>
+
+<dl>
+    <dt>Controller:</dt>
+    <dd><?php echo $this->escapeHtml($this->controller) ?>
+<?php
+if (isset($this->controller_class)
+    && $this->controller_class
+    && $this->controller_class != $this->controller
+) {
+    echo '(' . sprintf('resolves to %s', $this->escapeHtml($this->controller_class)) . ')';
 }
-</style>
-<![endif]-->
-<div class="row">
+?>
+</dd>
+</dl>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<?php endif ?>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="text-center error-box">
-                    <h1 class="error-text-2 bounceInDown animated"> <?php echo $this->translate('A 404 error occurred') ?> <span class="particle particle--c"></span><span class="particle particle--a"></span><span class="particle particle--b"></span></h1>
-                    <h2 class="font-xl"><strong><i class="fa fa-fw fa-warning fa-lg text-warning"></i> <?php echo $this->message ?></strong></h2>
-                    <br />
-                    <p class="lead">
-                        <?php if (isset($this->reason) && $this->reason): ?>
+<?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
 
-                        <?php
-                        $reasonMessage= '';
-                        switch ($this->reason) {
-                            case 'error-controller-cannot-dispatch':
-                                $reasonMessage = $this->translate('The requested controller was unable to dispatch the request.');
-                                break;
-                            case 'error-controller-not-found':
-                                $reasonMessage = $this->translate('The requested controller could not be mapped to an existing controller class.');
-                                break;
-                            case 'error-controller-invalid':
-                                $reasonMessage = $this->translate('The requested controller was not dispatchable.');
-                                break;
-                            case 'error-router-no-match':
-                                $reasonMessage = $this->translate('The requested URL could not be matched by routing.');
-                                break;
-                            default:
-                                $reasonMessage = $this->translate('We cannot determine at this time why a 404 was generated.');
-                                break;
-                        }
-                        ?>
+<?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
+<hr/>
+<h2>Additional information:</h2>
+<h3><?php echo get_class($this->exception); ?></h3>
+<dl>
+    <dt>File:</dt>
+    <dd>
+        <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
+    </dd>
+    <dt>Message:</dt>
+    <dd>
+        <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
+    </dd>
+    <dt>Stack trace:</dt>
+    <dd>
+        <pre class="prettyprint linenums"><?php echo $this->exception->getTraceAsString() ?></pre>
+    </dd>
+</dl>
+<?php
+    $e = $this->exception->getPrevious();
+    $icount = 0;
+    if ($e) :
+?>
+<hr/>
+<h2>Previous exceptions:</h2>
+<ul class="unstyled">
+    <?php while($e) : ?>
+    <li>
+        <h3><?php echo get_class($e); ?></h3>
+        <dl>
+            <dt>File:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
+            </dd>
+            <dt>Message:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $e->getMessage() ?></pre>
+            </dd>
+            <dt>Stack trace:</dt>
+            <dd>
+                <pre class="prettyprint linenums"><?php echo $e->getTraceAsString() ?></pre>
+            </dd>
+        </dl>
+    </li>
+    <?php
+        $e = $e->getPrevious();
+        $icount += 1;
+        if ($icount >=50) {
+            echo "<li>There may be more exceptions, but we have no enough memory to proccess it.</li>";
+            break;
+        }
+        endwhile;
+    ?>
+</ul>
+<?php endif; ?>
 
-                        <p><?php echo $reasonMessage ?></p>
+<?php else: ?>
 
-                        <?php endif ?>
-                    </p>
-                    <p class="font-md">
-                        <?php if (isset($this->controller) && $this->controller): ?>
+<h3>No Exception available</h3>
 
-                        <dl>
-                            <dt><?php echo $this->translate('Controller') ?>:</dt>
-                            <dd><?php echo $this->escapeHtml($this->controller) ?>
-                        <?php
-                        if (isset($this->controller_class)
-                            && $this->controller_class
-                            && $this->controller_class != $this->controller
-                        ) {
-                            echo '(' . sprintf($this->translate('resolves to %s'), $this->escapeHtml($this->controller_class)) . ')';
-                        }
-                        ?>
-                        </dd>
-                        </dl>
+<?php endif ?>
 
-                        <?php endif ?>
-                    </p>
-                    <br>
-                </div>
-                <?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
-
-                <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
-                <hr/>
-                <h2><?php echo $this->translate('Additional information') ?>:</h2>
-                <h3><?php echo get_class($this->exception); ?></h3>
-                <dl>
-                    <dt><?php echo $this->translate('File') ?>:</dt>
-                    <dd>
-                        <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
-                    </dd>
-                    <dt><?php echo $this->translate('Message') ?>:</dt>
-                    <dd>
-                        <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
-                    </dd>
-                    <dt><?php echo $this->translate('Stack trace') ?>:</dt>
-                    <dd>
-                        <pre class="prettyprint linenums"><?php echo $this->exception->getTraceAsString() ?></pre>
-                    </dd>
-                </dl>
-                <?php
-                    $e = $this->exception->getPrevious();
-                    if ($e) :
-                ?>
-                <hr/>
-                <h2><?php echo $this->translate('Previous exceptions') ?>:</h2>
-                <ul class="unstyled">
-                    <?php while($e) : ?>
-                    <li>
-                        <h3><?php echo get_class($e); ?></h3>
-                        <dl>
-                            <dt><?php echo $this->translate('File') ?>:</dt>
-                            <dd>
-                                <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
-                            </dd>
-                            <dt><?php echo $this->translate('Message') ?>:</dt>
-                            <dd>
-                                <pre class="prettyprint linenums"><?php echo $e->getMessage() ?></pre>
-                            </dd>
-                            <dt><?php echo $this->translate('Stack trace') ?>:</dt>
-                            <dd>
-                                <pre class="prettyprint linenums"><?php echo $e->getTraceAsString() ?></pre>
-                            </dd>
-                        </dl>
-                    </li>
-                    <?php
-                        $e = $e->getPrevious();
-                        endwhile;
-                    ?>
-                </ul>
-                <?php endif; ?>
-
-                <?php else: ?>
-
-                <h3><?php echo $this->translate('No Exception available') ?></h3>
-
-                <?php endif ?>
-
-                <?php endif ?>
-            </div>
-
-        </div>
-
-    </div>
-</div>
+<?php endif ?>
