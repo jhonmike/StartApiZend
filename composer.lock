@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2b1ad24bae2af0c2eb5e84737c654eb3",
-    "content-hash": "108898ec508e16477f4514cdc9321b7c",
+    "hash": "68b34965034959dd0cc938584e52fc9d",
+    "content-hash": "bbc4cf51d583edd647a090e9419d33ef",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -36,21 +36,21 @@
         },
         {
             "name": "zendframework/zend-component-installer",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-component-installer.git",
-                "reference": "a8364d76ccadf5096b81b27740a618eae7f78a01"
+                "reference": "63149eb094b67a142e014a793853125165870fbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-component-installer/zipball/a8364d76ccadf5096b81b27740a618eae7f78a01",
-                "reference": "a8364d76ccadf5096b81b27740a618eae7f78a01",
+                "url": "https://api.github.com/repos/zendframework/zend-component-installer/zipball/63149eb094b67a142e014a793853125165870fbf",
+                "reference": "63149eb094b67a142e014a793853125165870fbf",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0",
-                "php": "^5.5 || ^7.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
                 "composer/composer": ">=1.0.0-alpha10",
@@ -76,7 +76,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Composer plugin for automating component registration in zend-mvc and Expressive applications",
-            "time": "2016-06-02 17:44:01"
+            "time": "2016-06-27 21:18:08"
         },
         {
             "name": "zendframework/zend-config",
@@ -387,16 +387,16 @@
         },
         {
             "name": "zendframework/zend-mvc",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-mvc.git",
-                "reference": "af8c5bf21a7f5f61e997797b514a7c31c5a00b9a"
+                "reference": "dc9926ae85798c6765ae4124a19ec24a2e50f6cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-mvc/zipball/af8c5bf21a7f5f61e997797b514a7c31c5a00b9a",
-                "reference": "af8c5bf21a7f5f61e997797b514a7c31c5a00b9a",
+                "url": "https://api.github.com/repos/zendframework/zend-mvc/zipball/dc9926ae85798c6765ae4124a19ec24a2e50f6cb",
+                "reference": "dc9926ae85798c6765ae4124a19ec24a2e50f6cb",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
                 "mvc",
                 "zf2"
             ],
-            "time": "2016-05-31 19:27:09"
+            "time": "2016-06-23 20:39:38"
         },
         {
             "name": "zendframework/zend-router",
@@ -567,6 +567,50 @@
             "time": "2016-06-01 16:50:58"
         },
         {
+            "name": "zendframework/zend-skeleton-installer",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-skeleton-installer.git",
+                "reference": "450b7455de0793fe4329a7f71406cd5cf846b96b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-skeleton-installer/zipball/450b7455de0793fe4329a7f71406cd5cf846b96b",
+                "reference": "450b7455de0793fe4329a7f71406cd5cf846b96b",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-component-installer": "^1.0 || ^0.3 || ^1.0.0-dev@dev"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^2.3.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Zend\\SkeletonInstaller\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\SkeletonInstaller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Installer plugin for Zend Framework skeleton application",
+            "time": "2016-06-27 21:44:58"
+        },
+        {
             "name": "zendframework/zend-stdlib",
             "version": "3.0.1",
             "source": {
@@ -660,16 +704,16 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-validator.git",
-                "reference": "f956581bc5fa4cf3f2933fe24e77deded8d1937b"
+                "reference": "8ec9f57a717dd37340308aa632f148a2c2be1cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/f956581bc5fa4cf3f2933fe24e77deded8d1937b",
-                "reference": "f956581bc5fa4cf3f2933fe24e77deded8d1937b",
+                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/8ec9f57a717dd37340308aa632f148a2c2be1cfc",
+                "reference": "8ec9f57a717dd37340308aa632f148a2c2be1cfc",
                 "shasum": ""
             },
             "require": {
@@ -727,20 +771,20 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2016-05-16 13:39:40"
+            "time": "2016-06-23 13:44:31"
         },
         {
             "name": "zendframework/zend-view",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-view.git",
-                "reference": "001336925fec6bb36e8e6d2b2af60da30a9d087e"
+                "reference": "1516805ed7f04afedbd4600d496437c49847a6cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/001336925fec6bb36e8e6d2b2af60da30a9d087e",
-                "reference": "001336925fec6bb36e8e6d2b2af60da30a9d087e",
+                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/1516805ed7f04afedbd4600d496437c49847a6cd",
+                "reference": "1516805ed7f04afedbd4600d496437c49847a6cd",
                 "shasum": ""
             },
             "require": {
@@ -789,11 +833,14 @@
                 "zendframework/zend-servicemanager": "Zend\\ServiceManager component",
                 "zendframework/zend-uri": "Zend\\Uri component"
             },
+            "bin": [
+                "bin/templatemap_generator.php"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev",
-                    "dev-develop": "2.8-dev"
+                    "dev-master": "2.8-dev",
+                    "dev-develop": "2.9-dev"
                 }
             },
             "autoload": {
@@ -811,7 +858,56 @@
                 "view",
                 "zf2"
             ],
-            "time": "2016-05-12 14:24:52"
+            "time": "2016-06-21 20:58:34"
+        },
+        {
+            "name": "zfcampus/zf-development-mode",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zfcampus/zf-development-mode.git",
+                "reference": "909413a0a6b45995de804db75b52b44428102dd4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zfcampus/zf-development-mode/zipball/909413a0a6b45995de804db75b52b44428102dd4",
+                "reference": "909413a0a6b45995de804db75b52b44428102dd4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^5.4",
+                "squizlabs/php_codesniffer": "^2.3.1"
+            },
+            "bin": [
+                "bin/zf-development-mode"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev",
+                    "dev-develop": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ZF\\DevelopmentMode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Zend Framework development mode script",
+            "homepage": "http://github.com/zfcampus/zf-development-mode",
+            "keywords": [
+                "framework",
+                "zf2"
+            ],
+            "time": "2016-06-22 20:39:20"
         }
     ],
     "packages-dev": [],
@@ -824,7 +920,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": {}
+        "php": "^5.6 || ^7.0"
     },
     "platform-dev": []
 }
