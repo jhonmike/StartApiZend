@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/jhonmike/StartApiZend.png?label=ready&title=Ready)](https://waffle.io/jhonmike/StartApiZend)
 # Api Example Zend3/Doctrine2
 
 [![Stories in Ready](https://badge.waffle.io/jhonmike/StartApiZend.png?label=ready&title=Ready)](https://waffle.io/jhonmike/StartApiZend)
