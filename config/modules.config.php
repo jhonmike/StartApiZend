@@ -5,15 +5,13 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application\Controller;
-
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
-
-class IndexController extends AbstractActionController
-{
-    public function indexAction()
-    {
-        return new JsonModel(['maka' => 'x']);
-    }
-}
+/**
+ * List of enabled modules for this application.
+ *
+ * This should be an array of module namespaces used in the application.
+ */
+return [
+    'Zend\Router',
+    'Zend\Validator',
+    'Application',
+];
