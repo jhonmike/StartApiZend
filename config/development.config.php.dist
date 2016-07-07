@@ -8,7 +8,6 @@
 return [
     // Additional modules to include when in development mode
     'modules' => [
-        'Zend\ServiceManager\Di',
         'ZendDeveloperTools',
     ],
     // Configuration overrides during development mode
