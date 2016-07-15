@@ -57,4 +57,20 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'doctrine' => [
+        'driver' => [
+            'application_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [
+                    __DIR__ . '/../src/Entity',
+                ],
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'Application\Entity' => 'application_driver'
+                ]
+            ]
+        ]
+    ]
 ];
