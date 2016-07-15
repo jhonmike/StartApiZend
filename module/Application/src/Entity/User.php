@@ -5,17 +5,17 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TestDb
+ * User
  *
- * @ORM\Table(name="test_db")
+ * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class TestDb
+class User
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,21 +24,70 @@ class TestDb
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password_clue", type="string", length=45, nullable=true)
+     */
+    private $passwordClue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
+     */
+    private $salt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="activation_key", type="string", length=255, nullable=false)
+     */
+    private $activationKey;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
+     */
+    private $active = false;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -48,7 +97,7 @@ class TestDb
      *
      * @return int
      */
-    public function getId()
+    public function getId() : Integer
     {
         return $this->id;
     }
@@ -58,9 +107,9 @@ class TestDb
      *
      * @param string $name
      *
-     * @return TestDb
+     * @return User
      */
-    public function setName($name)
+    public function setName(String $name) : User
     {
         $this->name = $name;
 
@@ -72,9 +121,177 @@ class TestDb
      *
      * @return string
      */
-    public function getName()
+    public function getName() : String
     {
         return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail(String $email) : User
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail() : String
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername(String $username) : User
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername() : String
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword(String $password) : User
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword() : String
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set passwordClue
+     *
+     * @param string $passwordClue
+     *
+     * @return User
+     */
+    public function setPasswordClue(String $passwordClue) : User
+    {
+        $this->passwordClue = $passwordClue;
+
+        return $this;
+    }
+
+    /**
+     * Get passwordClue
+     *
+     * @return string
+     */
+    public function getPasswordClue() : String
+    {
+        return $this->passwordClue;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return User
+     */
+    public function setSalt(String $salt) : User
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt() : String
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set activationKey
+     *
+     * @param string $activationKey
+     *
+     * @return User
+     */
+    public function setActivationKey(String $activationKey) : User
+    {
+        $this->activationKey = $activationKey;
+
+        return $this;
+    }
+
+    /**
+     * Get activationKey
+     *
+     * @return string
+     */
+    public function getActivationKey() : String
+    {
+        return $this->activationKey;
+    }
+
+    /**
+     * Set active
+     *
+     * @param bool $active
+     *
+     * @return User
+     */
+    public function setActive(Boolean $active) : User
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return bool
+     */
+    public function getActive() : Boolean
+    {
+        return $this->active;
     }
 
     /**
@@ -82,9 +299,9 @@ class TestDb
      *
      * @param \DateTime $created
      *
-     * @return TestDb
+     * @return User
      */
-    public function setCreated($created)
+    public function setCreated(\DateTime $created) : User
     {
         $this->created = $created;
 
@@ -96,7 +313,7 @@ class TestDb
      *
      * @return \DateTime
      */
-    public function getCreated()
+    public function getCreated() : \DateTime
     {
         return $this->created;
     }
@@ -106,9 +323,9 @@ class TestDb
      *
      * @param \DateTime $updated
      *
-     * @return TestDb
+     * @return User
      */
-    public function setUpdated($updated)
+    public function setUpdated(\DateTime $updated) : User
     {
         $this->updated = $updated;
 
@@ -120,9 +337,8 @@ class TestDb
      *
      * @return \DateTime
      */
-    public function getUpdated()
+    public function getUpdated() : \DateTime
     {
         return $this->updated;
     }
 }
-
