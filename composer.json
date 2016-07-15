@@ -1,54 +1,68 @@
 {
-    "name": "jhonmike/StartApiZend",
-    "description": "Skeleton Application for Zend Framework",
-    "type": "project",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "framework",
-        "mvc",
-        "zf2"
-    ],
-    "homepage": "http://framework.zend.com/",
-    "minimum-stability": "dev",
-    "prefer-stable": false,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/webimpress/DoctrineORMModule"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/webimpress/DoctrineModule"
-        }
-    ],
-    "require": {
-        "php": "^7.0",
-        "zendframework/zend-component-installer": "^1.0 || ^0.3 || ^1.0.0-dev@dev",
-        "zendframework/zend-mvc": "^3.0.2",
-        "zendframework/zend-servicemanager": "^3.1.0",
-        "zfcampus/zf-development-mode": "^3.0",
-        "doctrine/doctrine-module": "dev-feature/zf3-support as 2.0",
-        "doctrine/doctrine-orm-module": "dev-feature/zf3-support as 1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Application\\": "module/Application/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "ApplicationTest\\": "module/Application/test/"
-        }
-    },
-    "extra": [],
-    "scripts": {
-        "development-disable": "zf-development-mode disable",
-        "development-enable": "zf-development-mode enable",
-        "development-status": "zf-development-mode status",
-        "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.4",
-        "zendframework/zend-developer-tools": "^1.1"
+  "name": "jhonmike/StartApiZend",
+  "description": "Skeleton Application for Zend Framework 3",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "framework",
+    "mvc",
+    "zf3",
+    "doctrine2"
+  ],
+  "homepage": "http://www.jhonmike.com.br/zf3demo",
+  "authors": [
+    {
+      "name": "Jhon Mike Soares",
+      "email": "developer@jhonmike.com.br",
+      "homepage": "http://www.jhonmike.com.br",
+      "role": "Developer"
     }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": false,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/webimpress/DoctrineORMModule"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/webimpress/DoctrineModule"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "zendframework/zend-component-installer": "^1.0 || ^0.3 || ^1.0.0-dev@dev",
+    "zendframework/zend-mvc": "^3.0.2",
+    "zendframework/zend-servicemanager": "^3.1.0",
+    "zfcampus/zf-development-mode": "^3.0",
+    "doctrine/doctrine-module": "dev-feature/zf3-support as 2.0",
+    "doctrine/doctrine-orm-module": "dev-feature/zf3-support as 1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Application\\": "module/Application/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ApplicationTest\\": "module/Application/test/"
+    }
+  },
+  "extra": [],
+  "scripts": {
+    "development-disable": "zf-development-mode disable",
+    "development-enable": "zf-development-mode enable",
+    "development-status": "zf-development-mode status",
+    "serve": "php -S 0.0.0.0:8080 -t public/ public/index.php",
+    "phpunit": "./vendor/bin/phpunit",
+    "orm:create": "./vendor/bin/doctrine-module orm:schema-tool:create",
+    "orm:drop": "./vendor/bin/doctrine-module orm:schema-tool:drop --force",
+    "orm:fixture": "./vendor/bin/doctrine-module data-fixture:import",
+    "test": "composer orm:drop \n composer orm:create \n composer phpunit"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.4",
+    "zendframework/zend-developer-tools": "^1.1"
+  }
 }
