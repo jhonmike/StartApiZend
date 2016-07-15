@@ -8,12 +8,12 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new JsonModel(['maka' => 'x']);
+        return new ViewModel();
     }
 }
