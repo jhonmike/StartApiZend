@@ -37,7 +37,8 @@
     "zendframework/zend-servicemanager": "^3.1.0",
     "zfcampus/zf-development-mode": "^3.0",
     "doctrine/doctrine-module": "dev-feature/zf3-support as 2.0",
-    "doctrine/doctrine-orm-module": "dev-feature/zf3-support as 1.0"
+    "doctrine/doctrine-orm-module": "dev-feature/zf3-support as 1.0",
+    "zendframework/zend-math": "^3.0"
   },
   "autoload": {
     "psr-4": {

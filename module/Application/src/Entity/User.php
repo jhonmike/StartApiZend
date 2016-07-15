@@ -3,6 +3,8 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Hydrator;
+use Zend\Math\Rand;
 
 /**
  * User
@@ -87,10 +89,23 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetime", nullable=true)
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    private $updated;
+    private $lastLogin;
 
+    /**
+     * Constructor
+     * @param array $options
+     */
+    public function __construct(array $options = array())
+    {
+        $this->salt = base64_encode(Rand::getBytes(8));
+        $hydrator = new Hydrator\ClassMethods();
+        $hydrator->hydrate($options, $this);
+        $this->activationKey = md5($this->email.$this->salt);
+        $this->created = new \DateTime("now");
+        $this->lastLogin = new \DateTime("now");
+    }
 
     /**
      * Get id
@@ -319,26 +334,39 @@ class User
     }
 
     /**
-     * Set updated
+     * Set lastLogin
      *
-     * @param \DateTime $updated
+     * @param \DateTime $lastLogin
      *
      * @return User
      */
-    public function setUpdated(\DateTime $updated) : User
+    public function setLastLogin(\DateTime $lastLogin) : User
     {
-        $this->updated = $updated;
+        $this->lastLogin = $lastLogin;
 
         return $this;
     }
 
     /**
-     * Get updated
+     * Get lastLogin
      *
      * @return \DateTime
      */
-    public function getUpdated() : \DateTime
+    public function getLastLogin() : \DateTime
     {
-        return $this->updated;
+        return $this->lastLogin;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray() : array
+    {
+        $hydrator = new Hydrator\ClassMethods();
+        $array = $hydrator->extract($this);
+        unset($array['password']);
+
+        return $array;
+    }
+
 }
