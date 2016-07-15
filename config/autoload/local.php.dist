@@ -12,4 +12,25 @@
  */
 
 return [
+    'db' => [
+        'driver'   => 'Pdo',
+        'dsn'      => 'mysql:dbname=database_name;host=localhost',
+        'username' => 'database_user',
+        'password' => 'database_pass',
+    ],
+    'doctrine' => [
+        'connection' => [
+            // default connection name
+            'orm_default' => [
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => [
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'user'     => 'database_user',
+                    'password' => 'database_pass',
+                    'dbname'   => 'database_name',
+                ]
+            ]
+        ]
+    ]
 ];
