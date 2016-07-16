@@ -6,6 +6,11 @@ use Application\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Zend\Hydrator;
 
+/**
+ * Class UserService
+ * @package Application\Service
+ * @author Jhon Mike <developer@jhonmike.com.br>
+ */
 class UserService
 {
     private $em;

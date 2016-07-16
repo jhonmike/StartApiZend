@@ -7,7 +7,9 @@ use Zend\Hydrator;
 use Zend\Math\Rand;
 
 /**
- * User
+ * Class User
+ * @package Application\Entity
+ * @author Jhon Mike <developer@jhonmike.com.br>
  *
  * @ORM\Table(name="user")
  * @ORM\Entity
