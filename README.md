@@ -66,31 +66,6 @@ precedence over the former when running tests, and is ignored by version
 control. (If you want to make the modifications permanent, edit the
 `phpunit.xml.dist` file.)
 
-## Using Vagrant
-
-This skeleton includes a `Vagrantfile` based on ubuntu 14.04, and using the
-ondrej/php PPA to provide PHP 7.0. Start it up using:
-
-```bash
-$ vagrant up
-```
-
-Once built, you can also run composer within the box. For example, the following
-will install dependencies:
-
-```bash
-$ vagrant ssh -c 'composer install'
-```
-
-While this will update them:
-
-```bash
-$ vagrant ssh -c 'composer update'
-```
-
-While running, Vagrant maps your host port 8080 to port 80 on the virtual
-machine; you can visit the site at http://localhost:8080/
-
 ## Using docker-compose
 
 This skeleton provides a `docker-compose.yml` for use with
