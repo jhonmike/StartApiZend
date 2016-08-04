@@ -1,7 +1,8 @@
-FROM php:7.0-apache
+FROM php:7.0.9-apache
 
 RUN apt-get update \
  && apt-get install -y git zlib1g-dev \
+ && docker-php-ext-install mysqli \
  && docker-php-ext-install zip \
  && a2enmod rewrite \
  && sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/apache2.conf \

@@ -3,5 +3,15 @@ zf:
   dockerfile: Dockerfile
   ports:
    - "8080:80"
+   - "443:443"
   volumes:
    - .:/var/www
+  links:
+   - db
+db:
+  image: mysql:5.7.14
+  volumes:
+   - /var/lib/mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
+   - MYSQL_DATABASE=dpt-api
