@@ -5,8 +5,6 @@ RUN apt-get update \
  && docker-php-ext-install mysqli \
  && docker-php-ext-install zip \
  && a2enmod rewrite \
- && sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/apache2.conf \
- && mv /var/www/html /var/www/public \
  && curl -sS https://getcomposer.org/installer \
   | php -- --install-dir=/usr/local/bin --filename=composer
 

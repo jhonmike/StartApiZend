@@ -6,6 +6,7 @@ zf:
    - "443:443"
   volumes:
    - .:/var/www
+   - ./public:/var/www/html
   links:
    - db
 db:
@@ -14,4 +15,4 @@ db:
    - /var/lib/mysql
   environment:
    - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=dpt-api
+   - MYSQL_DATABASE=zf3d2
