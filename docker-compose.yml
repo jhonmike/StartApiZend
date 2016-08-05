@@ -11,6 +11,8 @@ zf:
    - db
 db:
   image: mysql:5.7.14
+  ports:
+   - "3306:3306"
   volumes:
    - /var/lib/mysql
   environment:
