@@ -20,25 +20,14 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": false,
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/webimpress/DoctrineORMModule"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/webimpress/DoctrineModule"
-    }
-  ],
   "require": {
     "php": "^7.0",
     "zendframework/zend-component-installer": "^1.0 || ^0.3 || ^1.0.0-dev@dev",
     "zendframework/zend-mvc": "^3.0.2",
-    "zendframework/zend-servicemanager": "^3.1.0",
+    "zendframework/zend-math": "^3.0",
+    "zendframework/zend-servicemanager": "^3.1.1",
     "zfcampus/zf-development-mode": "^3.0",
-    "doctrine/doctrine-module": "dev-feature/zf3-support as 2.0",
-    "doctrine/doctrine-orm-module": "dev-feature/zf3-support as 1.0",
-    "zendframework/zend-math": "^3.0"
+    "doctrine/doctrine-orm-module": "dev-master"
   },
   "autoload": {
     "psr-4": {

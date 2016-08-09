@@ -9,26 +9,21 @@
  * @NOTE: This file is ignored from Git by default with the .gitignore included
  * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
  * credentials from accidentally being committed into version control.
+ *
+ * Settings below recommended for docker
  */
-
 return [
-    'db' => [
-        'driver'   => 'Pdo',
-        'dsn'      => 'mysql:dbname=database_name;host=localhost',
-        'username' => 'database_user',
-        'password' => 'database_pass',
-    ],
     'doctrine' => [
         'connection' => [
             // default connection name
             'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
                 'params' => [
-                    'host'     => 'localhost',
+                    'host'     => '172.17.0.1',
                     'port'     => '3306',
-                    'user'     => 'database_user',
-                    'password' => 'database_pass',
-                    'dbname'   => 'database_name',
+                    'user'     => 'root',
+                    'password' => 'root',
+                    'dbname'   => 'zf3d2',
                 ]
             ]
         ]
