@@ -9,7 +9,15 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencies(),
             'routes' => $this->getRoutes(),
-            'doctrine' => $this->getDoctrineConfig()
+            'doctrine' => $this->getDoctrineConfig(),
+            // 'cors' => [
+            //     'origin' => '*',
+            //     'methods' => ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT'],
+            //     'headers.allow' => ['content-type', 'authorization'],
+            //     'headers.expose' => [],
+            //     'credentials' => false,
+            //     'cache' => 0,
+            // ]
         ];
     }
 
@@ -18,12 +26,15 @@ class ConfigProvider
         return [
             'invokables' => [
                 Service\Ping::class => Service\Ping::class,
+                Service\Home::class => Service\Home::class,
             ],
             'factories'  => [
-                Service\Home::class => Service\HomeFactory::class,
-                \Doctrine\Common\Cache\Cache::class => \Core\Doctrine\ArrayCacheFactory::class,
-                \Doctrine\ORM\EntityManager::class => \Core\Doctrine\EntityManagerFactory::class,
-                \Doctrine\DBAL\Migrations\Migration::class => \Core\Doctrine\MigrationFactory::class,
+                Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
+                Pipe\InputFilterValid::class => [Pipe\InputFilterValid::class, 'factory'],
+
+                \Doctrine\Common\Cache\Cache::class => Doctrine\ArrayCacheFactory::class,
+                \Doctrine\ORM\EntityManager::class => Doctrine\EntityManagerFactory::class,
+                \Doctrine\DBAL\Migrations\Migration::class => Doctrine\MigrationFactory::class,
             ],
         ];
     }
@@ -31,16 +42,16 @@ class ConfigProvider
     private function getDoctrineConfig()
     {
         return [
-            'connection' => [
-                'driver'   => 'pdo_mysql',
-                'host'     => '127.0.0.1',
-                'port'     => '3306',
-                'user'     => 'root',
-                'password' => 'root',
-                'dbname'   => 'db_api',
-                'charset'  => 'UTF8',
-                'unix_socket' => '/tmp/mysql.sock'
-            ],
+            // 'connection' => [
+            //     'driver'   => 'pdo_mysql',
+            //     'host'     => '127.0.0.1',
+            //     'port'     => '3306',
+            //     'user'     => 'root',
+            //     'password' => 'root',
+            //     'dbname'   => 'db_api',
+            //     'charset'  => 'UTF8',
+            //     'unix_socket' => '/tmp/mysql.sock'
+            // ],
             'annotation' => [
                 'metadata' => [
                     'src/Api/Entity',
@@ -64,13 +75,13 @@ class ConfigProvider
     private function getRoutes()
     {
         return [
-            'home' => [
-                'path' => '/',
+            '/' => [
+                'name' => 'home',
                 'middleware' => Service\Home::class,
                 'allowed_methods' => ['GET']
             ],
-            'api.ping' => [
-                'path' => '/api/ping',
+            '/api/ping' => [
+                'name' => 'api.ping',
                 'middleware' => Service\Ping::class,
                 'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
             ],

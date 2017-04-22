@@ -16,12 +16,16 @@
     "require": {
         "php": "^7.1",
         "doctrine/orm": "^2.5",
+        "neomerx/cors-psr7": "^1.0",
         "roave/security-advisories": "dev-master",
         "zendframework/zend-component-installer": "^1.0 || ^0.7.1",
         "zendframework/zend-config-aggregator": "^0.2.0",
+        "zendframework/zend-crypt": "^3.2",
         "zendframework/zend-expressive": "^2.0.2",
         "zendframework/zend-expressive-helpers": "^4.0",
         "zendframework/zend-expressive-zendrouter": "^2.0.1",
+        "zendframework/zend-hydrator": "^2.2",
+        "zendframework/zend-inputfilter": "^2.7",
         "zendframework/zend-servicemanager": "^3.3",
         "zendframework/zend-stdlib": "^3.1"
     },
