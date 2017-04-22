@@ -1,40 +1,23 @@
 <?php
 
-use Zend\Mvc\Application;
-use Zend\Stdlib\ArrayUtils;
+// Delegate static file requests back to the PHP built-in webserver
+if (php_sapi_name() === 'cli-server'
+    && is_file(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))
+) {
+    return false;
+}
 
-/**
- * This makes our life easier when dealing with paths. Everything is relative
- * to the application root now.
- */
 chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
 
-// Decline static file requests back to the PHP built-in webserver
-if (php_sapi_name() === 'cli-server') {
-    $path = realpath(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-    if (__FILE__ !== $path && is_file($path)) {
-        return false;
-    }
-    unset($path);
-}
+$container = require 'config/container.php';
 
-// Composer autoloading
-include __DIR__ . '/../vendor/autoload.php';
+/** @var \Zend\Expressive\Application $app */
+$app = $container->get(\Zend\Expressive\Application::class);
 
-if (! class_exists(Application::class)) {
-    throw new RuntimeException(
-        "Unable to load application.\n"
-        . "- Type `composer install` if you are developing locally.\n"
-        . "- Type `vagrant ssh -c 'composer install'` if you are using Vagrant.\n"
-        . "- Type `docker-compose run zf composer install` if you are using Docker.\n"
-    );
-}
+// Import programmatic/declarative middleware pipeline and routing
+// configuration statements
+require 'config/pipeline.php';
+require 'config/routes.php';
 
-// Retrieve configuration
-$appConfig = require __DIR__ . '/../config/application.config.php';
-if (file_exists(__DIR__ . '/../config/development.config.php')) {
-    $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
-}
-
-// Run the application!
-Application::init($appConfig)->run();
+$app->run();
