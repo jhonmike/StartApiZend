@@ -28,9 +28,10 @@ class ConfigProvider
             'invokables' => [
                 Service\Ping::class => Service\Ping::class,
                 Service\Home::class => Service\Home::class,
-                Service\User\UserService::class => Service\User\UserService::class,
             ],
             'factories'  => [
+                Service\User\UserService::class => [Service\User\UserService::class, 'factory'],
+
                 Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
                 Pipe\InputFilterValid::class => [Pipe\InputFilterValid::class, 'factory'],
 

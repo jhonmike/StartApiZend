@@ -2,9 +2,11 @@
 
 namespace Api\Entity;
 
+use Api\Hydrator\DateTimeStrategy;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Crypt\Password\Bcrypt;
+use Zend\Hydrator;
 use Zend\Math\Rand;
 
 /**
@@ -84,7 +86,6 @@ class User
 
     public function __construct()
     {
-        parent::__construct();
         $this->salt = base64_encode(Rand::getBytes(8));
         $this->setCreated();
         $this->setUpdated();
@@ -266,5 +267,6 @@ class User
             $array['last_login'] = $this->getLastLogin()->format('Y-m-d\TH:i:sP');
         unset($array['password']);
         unset($array['salt']);
+        return $array;
     }
 }

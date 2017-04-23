@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Doctrine\Hydrator;
+namespace Api\Hydrator;
 
 use Zend\Hydrator\Strategy\DefaultStrategy;
 
