@@ -9,6 +9,7 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencies(),
             'routes' => $this->getRoutes(),
+            'inputFilter' => $this->getInputFilter(),
             'doctrine' => $this->getDoctrineConfig(),
             // 'cors' => [
             //     'origin' => '*',
@@ -17,7 +18,7 @@ class ConfigProvider
             //     'headers.expose' => [],
             //     'credentials' => false,
             //     'cache' => 0,
-            // ]
+            // ],
         ];
     }
 
@@ -27,6 +28,10 @@ class ConfigProvider
             'invokables' => [
                 Service\Ping::class => Service\Ping::class,
                 Service\Home::class => Service\Home::class,
+                Service\User\UserList::class   => Service\User\UserList::class,
+                Service\User\UserGet::class    => Service\User\UserGet::class,
+                Service\User\UserSave::class   => Service\User\UserSave::class,
+                Service\User\UserDelete::class => Service\User\UserDelete::class,
             ],
             'factories'  => [
                 Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
@@ -75,15 +80,144 @@ class ConfigProvider
     private function getRoutes()
     {
         return [
-            '/' => [
-                'name' => 'home',
+            'home' => [
+                'path' => '/',
                 'middleware' => Service\Home::class,
-                'allowed_methods' => ['GET']
+                'allowed_methods' => ['GET'],
+                'allowed_roles' => ['GUEST'],
             ],
-            '/api/ping' => [
-                'name' => 'api.ping',
+            'api.ping' => [
+                'path' => '/api/ping',
                 'middleware' => Service\Ping::class,
                 'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+                'allowed_roles' => ['GUEST'],
+            ],
+            'api.user.list' => [
+                'path' => '/api/users',
+                'middleware' => Service\User\UserList::class,
+                'allowed_methods' => ['GET'],
+                'allowed_roles' => ['GUEST'],
+            ],
+            'api.user.get' => [
+                'path' => '/api/user/:id',
+                'middleware' => Service\User\UserGet::class,
+                'allowed_methods' => ['GET'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    [
+                        'name' => 'id',
+                        'required' => false,
+                        'validators' => [
+                            [
+                                'name' => 'Int'
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'api.user.post' => [
+                'path' => '/api/user',
+                'middleware' => Service\User\UserSave::class,
+                'allowed_methods' => ['POST'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    'inputFilter' => [
+                        'name' => 'user.save',
+                    ]
+                ],
+            ],
+            'api.user.put' => [
+                'path' => '/api/user/:id',
+                'middleware' => Service\User\UserSave::class,
+                'allowed_methods' => ['PUT', 'PATCH'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    [
+                        'name' => 'id',
+                        'required' => true,
+                        'validators' => [
+                            [
+                                'name' => 'Int'
+                            ],
+                        ],
+                    ],
+                    'inputFilter' => [
+                        'name' => 'user.save',
+                    ]
+                ],
+            ],
+            'api.user.delete' => [
+                'path' => '/api/user/:id',
+                'middleware' => Service\User\UserDelete::class,
+                'allowed_methods' => ['DELETE'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    [
+                        'name' => 'id',
+                        'required' => false,
+                        'validators' => [
+                            [
+                                'name' => 'Int'
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function getInputFilter()
+    {
+        return [
+            'user.save' => [
+                [
+                    'name' => 'name',
+                    'required' => true,
+                    'validators' => [
+                        [
+                            'name' => 'StringLength',
+                            'options' => [
+                                'encoding' => 'UTF-8',
+                                'min' => 4,
+                                'max' => 100,
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'email',
+                    'required' => true,
+                    'validators' => [
+                        [
+                            'name' => 'StringLength',
+                            'options' => [
+                                'encoding' => 'UTF-8',
+                                'min' => 10,
+                                'max' => 100,
+                            ],
+                        ],
+                        [
+                            'name' => \Zend\Validator\EmailAddress::class,
+                            'options' => [
+                                'useMxCheck' => true
+                            ]
+                        ]
+                    ],
+                ],
+                [
+                    'name' => 'password',
+                    'required' => true,
+                    'validators' => [
+                        [
+                            'name' => 'StringLength',
+                            'options' => [
+                                'encoding' => 'UTF-8',
+                                'min' => 4,
+                                'max' => 100,
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
     }

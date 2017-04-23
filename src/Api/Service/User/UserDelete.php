@@ -1,16 +1,18 @@
 <?php
 
-namespace Api\Service;
+namespace Api\Service\User;
 
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
-class Ping implements MiddlewareInterface
+class UserDelete implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
-        return new JsonResponse(['ack' => time()]);
+        return new JsonResponse([
+            'welcome' => 'User Delete',
+        ]);
     }
 }

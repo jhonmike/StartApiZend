@@ -9,35 +9,40 @@ use Psr\Http\Message\ServerRequestInterface;
 use Locale;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\InputFilter\Factory;
+use Zend\Expressive\Router\RouterInterface;
 
 class InputFilterValid implements MiddlewareInterface
 {
+    private $router;
     private $config;
 
     public static function factory(ContainerInterface $container)
     {
         return new self(
+            $container->get(RouterInterface::class),
             $container->get('config')
         );
     }
 
-    public function __construct(array $config)
+    public function __construct(RouterInterface $router, array $config)
     {
+        $this->router = $router;
         $this->config = $config;
     }
 
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
-        $path = $request->getServerParams()['REQUEST_URI'];
+        $router = $this->router->match($request)->getMatchedRouteName();
         $method = $request->getServerParams()['REQUEST_METHOD'] ?? 'NOT_METHOD';
         $lang = $request->getServerParams()['HTTP_ACCEPT_LANGUAGE'] ?? 'pt-BR';
         Locale::setDefault($this->parseLang($lang));
 
-        $config = $this->config['routes'][$path] ?? [];
+        $config = $this->config['routes'][$router] ?? [];
         if (!isset($config['parameters']))
             return $delegate->process($request->withAttribute('config', $config));
 
-        $parameters = $config['parameters'];
+        $parameters = $this->parseParameters($config['parameters']);
+
         $factory = new Factory();
         $inputFilter = $factory->createInputFilter($parameters);
         if (in_array($method, ['GET', 'DELETE'], true))
@@ -62,8 +67,21 @@ class InputFilterValid implements MiddlewareInterface
 
     private function parseLang($httpLang) : string
     {
-        $langs = explode(',', $httpLang);
-        $lang = str_replace('-', '_', $langs[0]);
+        $languages = explode(',', $httpLang);
+        $lang = str_replace('-', '_', $languages[0]);
         return $lang;
+    }
+
+    private function parseParameters(array $parameters) : array
+    {
+        if (!array_key_exists('inputFilter', $parameters))
+            return $parameters;
+
+        $nameFilters = $parameters['inputFilter']['name'];
+        unset($parameters['inputFilter']);
+        if (!isset($this->config['inputFilter'][$nameFilters]))
+            return $parameters;
+
+        return array_merge($parameters, $this->config['inputFilter'][$nameFilters]);
     }
 }

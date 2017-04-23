@@ -30,12 +30,12 @@
 $config = $container->get('config');
 if (isset($config['routes'])) {
     foreach ($config['routes'] as $key => $value) {
-        $path = (is_string($key)) ? $key : $value['path'];
+        $name = (is_string($key)) ? $key : $value['name'];
         $app->route(
-            $path,
+            $value['path'],
             $value['middleware'],
             $value['allowed_methods'],
-            $value['name']
+            $name
         );
     }
 }
