@@ -53,7 +53,7 @@ class InputFilterValid implements MiddlewareInterface
         if ($inputFilter->isValid()) {
             if (in_array($method, ['GET', 'DELETE'], true))
                 $request = $request->withQueryParams($inputFilter->getValues());
-            if (in_array($method, ['POST', 'PUT'], true))
+            if (in_array($method, ['POST', 'PUT', 'PATCH'], true))
                 $request = $request->withParsedBody($inputFilter->getValues());
             return $delegate->process($request->withAttribute('config', $config));
         }

@@ -28,10 +28,7 @@ class ConfigProvider
             'invokables' => [
                 Service\Ping::class => Service\Ping::class,
                 Service\Home::class => Service\Home::class,
-                Service\User\UserList::class   => Service\User\UserList::class,
-                Service\User\UserGet::class    => Service\User\UserGet::class,
-                Service\User\UserSave::class   => Service\User\UserSave::class,
-                Service\User\UserDelete::class => Service\User\UserDelete::class,
+                Service\User\UserService::class => Service\User\UserService::class,
             ],
             'factories'  => [
                 Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
@@ -93,14 +90,16 @@ class ConfigProvider
                 'allowed_roles' => ['GUEST'],
             ],
             'api.user.list' => [
-                'path' => '/api/users',
-                'middleware' => Service\User\UserList::class,
+                'path' => '/api/user',
+                'middleware' => Service\User\UserService::class,
+                'action' => 'list',
                 'allowed_methods' => ['GET'],
                 'allowed_roles' => ['GUEST'],
             ],
             'api.user.get' => [
                 'path' => '/api/user/:id',
-                'middleware' => Service\User\UserGet::class,
+                'middleware' => Service\User\UserService::class,
+                'action' => 'get',
                 'allowed_methods' => ['GET'],
                 'allowed_roles' => ['GUEST'],
                 'parameters' => [
@@ -117,7 +116,8 @@ class ConfigProvider
             ],
             'api.user.post' => [
                 'path' => '/api/user',
-                'middleware' => Service\User\UserSave::class,
+                'middleware' => Service\User\UserService::class,
+                'action' => 'save',
                 'allowed_methods' => ['POST'],
                 'allowed_roles' => ['GUEST'],
                 'parameters' => [
@@ -128,7 +128,8 @@ class ConfigProvider
             ],
             'api.user.put' => [
                 'path' => '/api/user/:id',
-                'middleware' => Service\User\UserSave::class,
+                'middleware' => Service\User\UserService::class,
+                'action' => 'save',
                 'allowed_methods' => ['PUT', 'PATCH'],
                 'allowed_roles' => ['GUEST'],
                 'parameters' => [
@@ -146,9 +147,10 @@ class ConfigProvider
                     ]
                 ],
             ],
-            'api.user.delete' => [
+            'api.user.remove' => [
                 'path' => '/api/user/:id',
-                'middleware' => Service\User\UserDelete::class,
+                'middleware' => Service\User\UserService::class,
+                'action' => 'remove',
                 'allowed_methods' => ['DELETE'],
                 'allowed_roles' => ['GUEST'],
                 'parameters' => [
