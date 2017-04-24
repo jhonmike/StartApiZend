@@ -59,11 +59,13 @@ class UserService implements MiddlewareInterface
 
     public function save(ServerRequestInterface $request, DelegateInterface $delegate) : JsonResponse
     {
+        $parameters = $request->getAttribute('parameters', []);
+        $parameters['role'] = $parameters['role'] ?? 'USER';
         $user = new User();
         if ($request->getAttribute('id', false)) {
             $user = $this->gateway->getUserById($request->getAttribute('id'));
         }
-        $user->hydrator($request->getParsedBody());
+        $user->hydrator($parameters);
         $this->gateway->saveUser($user);
 
         return new JsonResponse($user->toArray());
@@ -71,7 +73,12 @@ class UserService implements MiddlewareInterface
 
     public function remove(ServerRequestInterface $request, DelegateInterface $delegate) : JsonResponse
     {
-        $this->gateway->removeUser($request->getAttribute('id'));
+        try {
+            $user = $this->gateway->getUserById($request->getAttribute('id'));
+        } catch (\Exception $e) {
+            return new JsonResponse(['message' => $e->getMessage()]);
+        }
+        $this->gateway->removeUser($user);
         return new JsonResponse(['message' => 'success']);
     }
 }

@@ -154,17 +154,6 @@ class ConfigProvider
                 'action' => 'remove',
                 'allowed_methods' => ['DELETE'],
                 'allowed_roles' => ['GUEST'],
-                'parameters' => [
-                    [
-                        'name' => 'id',
-                        'required' => false,
-                        'validators' => [
-                            [
-                                'name' => 'Int'
-                            ],
-                        ],
-                    ],
-                ],
             ],
         ];
     }

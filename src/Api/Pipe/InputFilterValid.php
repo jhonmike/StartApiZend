@@ -34,6 +34,7 @@ class InputFilterValid implements MiddlewareInterface
     {
         $router = $this->router->match($request)->getMatchedRouteName();
         $method = $request->getServerParams()['REQUEST_METHOD'] ?? 'NOT_METHOD';
+        $contentType = $request->getServerParams()['CONTENT_TYPE'] ?? 'application/x-www-form-urlencoded';
         $lang = $request->getServerParams()['HTTP_ACCEPT_LANGUAGE'] ?? 'pt-BR';
         Locale::setDefault($this->parseLang($lang));
 
@@ -45,17 +46,27 @@ class InputFilterValid implements MiddlewareInterface
 
         $factory = new Factory();
         $inputFilter = $factory->createInputFilter($parameters);
+        $data = [];
         if (in_array($method, ['GET', 'DELETE'], true))
-            $inputFilter->setData($request->getQueryParams());
-        if (in_array($method, ['POST', 'PUT'], true))
-            $inputFilter->setData($request->getParsedBody());
+            $data = $request->getQueryParams();
+        if (in_array($method, ['POST', 'PUT', 'PATCH'], true)
+            && strstr($contentType, 'application/x-www-form-urlencoded')
+        ) {
+            $data = $request->getParsedBody();
+        }
+        if (in_array($method, ['POST', 'PUT', 'PATCH'], true)
+            && strstr($contentType, 'application/json')
+        ) {
+            $data = json_decode($request->getBody()->getContents(), true);
+        }
+        $inputFilter->setData($data);
 
         if ($inputFilter->isValid()) {
-            if (in_array($method, ['GET', 'DELETE'], true))
-                $request = $request->withQueryParams($inputFilter->getValues());
-            if (in_array($method, ['POST', 'PUT', 'PATCH'], true))
-                $request = $request->withParsedBody($inputFilter->getValues());
-            return $delegate->process($request->withAttribute('config', $config));
+            return $delegate->process(
+                $request
+                    ->withAttribute('config', $config)
+                    ->withAttribute('parameters', $inputFilter->getValues())
+            );
         }
 
         $errors = [];

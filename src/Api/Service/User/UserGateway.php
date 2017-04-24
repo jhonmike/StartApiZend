@@ -30,6 +30,7 @@ class UserGateway implements UserGatewayInterface
     public function saveUser(User $user) : void
     {
         if (!$user->getId()) {
+            $user->generateKeys();
             $this->entityManager->persist($user);
         }
         $this->entityManager->flush();
@@ -38,5 +39,6 @@ class UserGateway implements UserGatewayInterface
     public function removeUser(User $user) : void
     {
         $this->entityManager->remove($user);
+        $this->entityManager->flush();
     }
 }
