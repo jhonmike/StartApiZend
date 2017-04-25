@@ -49,6 +49,7 @@ $app->pipe(UrlHelperMiddleware::class);
 // Register the dispatch middleware in the middleware pipeline
 $app->pipe(\Api\Pipe\Cors::class);
 $app->pipe(\Api\Pipe\InputFilterValid::class);
+$app->pipe(\Api\Pipe\Auth::class);
 $app->pipeDispatchMiddleware();
 
 // At this point, if no Response is return by any middleware, the
