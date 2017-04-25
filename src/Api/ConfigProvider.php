@@ -30,6 +30,7 @@ class ConfigProvider
                 Service\Home::class => Service\Home::class,
             ],
             'factories'  => [
+                Service\SignUp::class => [Service\SignUp::class, 'factory'],
                 Service\User\UserService::class => [Service\User\UserService::class, 'factory'],
 
                 Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
@@ -90,6 +91,59 @@ class ConfigProvider
                 'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
                 'allowed_roles' => ['GUEST'],
             ],
+            'api.sign-up' => [
+                'path' => '/api/sign-up',
+                'middleware' => Service\SignUp::class,
+                'allowed_methods' => ['POST'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    'inputFilter' => [
+                        'name' => 'user.required',
+                    ]
+                ],
+            ],
+            'api.sign-in' => [
+                'path' => '/api/sign-in',
+                'middleware' => Service\SignIn::class,
+                'allowed_methods' => ['POST'],
+                'allowed_roles' => ['GUEST'],
+                'parameters' => [
+                    [
+                        'name' => 'email',
+                        'required' => true,
+                        'validators' => [
+                            [
+                                'name' => 'StringLength',
+                                'options' => [
+                                    'encoding' => 'UTF-8',
+                                    'min' => 10,
+                                    'max' => 100,
+                                ],
+                            ],
+                            [
+                                'name' => \Zend\Validator\EmailAddress::class,
+                                'options' => [
+                                    'useMxCheck' => true
+                                ]
+                            ]
+                        ],
+                    ],
+                    [
+                        'name' => 'password',
+                        'required' => true,
+                        'validators' => [
+                            [
+                                'name' => 'StringLength',
+                                'options' => [
+                                    'encoding' => 'UTF-8',
+                                    'min' => 4,
+                                    'max' => 100,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'api.user.list' => [
                 'path' => '/api/user',
                 'middleware' => Service\User\UserService::class,
@@ -123,7 +177,7 @@ class ConfigProvider
                 'allowed_roles' => ['GUEST'],
                 'parameters' => [
                     'inputFilter' => [
-                        'name' => 'user.save',
+                        'name' => 'user.required',
                     ]
                 ],
             ],
@@ -144,7 +198,7 @@ class ConfigProvider
                         ],
                     ],
                     'inputFilter' => [
-                        'name' => 'user.save',
+                        'name' => 'user.required',
                     ]
                 ],
             ],
@@ -161,7 +215,7 @@ class ConfigProvider
     public function getInputFilter()
     {
         return [
-            'user.save' => [
+            'user.required' => [
                 [
                     'name' => 'name',
                     'required' => true,
