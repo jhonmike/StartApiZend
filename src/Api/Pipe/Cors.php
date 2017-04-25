@@ -9,6 +9,7 @@ use Neomerx\Cors\Strategies\Settings;
 use Interop\Container\ContainerInterface;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Cors implements MiddlewareInterface
@@ -40,7 +41,7 @@ class Cors implements MiddlewareInterface
         $this->hydrate($options);
     }
 
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate) : ResponseInterface
     {
         $analyzer = Analyzer::instance($this->buildSettings($request, $delegate));
         if ($this->logger) {

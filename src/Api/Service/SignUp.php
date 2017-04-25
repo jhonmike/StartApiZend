@@ -17,7 +17,7 @@ class SignUp implements MiddlewareInterface
 
     public static function factory(ContainerInterface $container) : SignUp
     {
-        return new SignUp($container->get(EntityManager::class));
+        return new self($container->get(EntityManager::class));
     }
 
     public function __construct(EntityManagerInterface $entityManager)

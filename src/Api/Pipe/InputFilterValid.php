@@ -5,6 +5,7 @@ namespace Api\Pipe;
 use Interop\Container\ContainerInterface;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Locale;
 use Zend\Diactoros\Response\JsonResponse;
@@ -16,7 +17,7 @@ class InputFilterValid implements MiddlewareInterface
     private $router;
     private $config;
 
-    public static function factory(ContainerInterface $container)
+    public static function factory(ContainerInterface $container) : InputFilterValid
     {
         return new self(
             $container->get(RouterInterface::class),
@@ -30,7 +31,7 @@ class InputFilterValid implements MiddlewareInterface
         $this->config = $config;
     }
 
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate) : ResponseInterface
     {
         $router = $this->router->match($request)->getMatchedRouteName();
         $method = $request->getServerParams()['REQUEST_METHOD'] ?? 'NOT_METHOD';

@@ -31,6 +31,7 @@ class ConfigProvider
             ],
             'factories'  => [
                 Service\SignUp::class => [Service\SignUp::class, 'factory'],
+                Service\SignIn::class => [Service\SignIn::class, 'factory'],
                 Service\User\UserService::class => [Service\User\UserService::class, 'factory'],
 
                 Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
