@@ -34,7 +34,8 @@ class ConfigProvider
                 Service\SignIn::class => [Service\SignIn::class, 'factory'],
                 Service\User\UserService::class => [Service\User\UserService::class, 'factory'],
 
-                Pipe\Cors::class => [Pipe\Cors::class, 'factory'],
+                \Tuupola\Middleware\Cors::class => Pipe\CorsFactory::class, 'factory',
+                Pipe\Auth::class => [Pipe\Auth::class, 'factory'],
                 Pipe\InputFilterValid::class => [Pipe\InputFilterValid::class, 'factory'],
 
                 \Doctrine\Common\Cache\Cache::class => Doctrine\ArrayCacheFactory::class,

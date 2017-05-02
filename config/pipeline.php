@@ -15,6 +15,7 @@ use Zend\Stratigility\Middleware\ErrorHandler;
 // all Exceptions.
 $app->pipe(ErrorHandler::class);
 $app->pipe(ServerUrlMiddleware::class);
+$app->pipe(\Tuupola\Middleware\Cors::class);
 
 // Pipe more middleware here that you want to execute on every request:
 // - bootstrapping
@@ -47,7 +48,6 @@ $app->pipe(UrlHelperMiddleware::class);
 // - etc.
 
 // Register the dispatch middleware in the middleware pipeline
-$app->pipe(\Api\Pipe\Cors::class);
 $app->pipe(\Api\Pipe\InputFilterValid::class);
 $app->pipe(\Api\Pipe\Auth::class);
 $app->pipeDispatchMiddleware();

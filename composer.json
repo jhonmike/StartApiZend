@@ -16,8 +16,8 @@
     "require": {
         "php": "^7.1",
         "doctrine/orm": "^2.5",
-        "neomerx/cors-psr7": "^1.0",
         "roave/security-advisories": "dev-master",
+        "tuupola/cors-middleware": "^0.5.2",
         "zendframework/zend-component-installer": "^1.0 || ^0.7.1",
         "zendframework/zend-config-aggregator": "^0.2.0",
         "zendframework/zend-crypt": "^3.2",
